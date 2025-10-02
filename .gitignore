@@ -1,0 +1,38 @@
+# Video files
+*.MOV
+*.mov
+*.mp4
+*.MP4
+*.avi
+*.AVI
+*.mkv
+*.MKV
+*.wmv
+*.WMV
+*.flv
+*.FLV
+
+# Large media files
+*.pdf
+*.PDF
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.log
