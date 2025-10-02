@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumaiya Rahman - Portfolio</title>
+    <!-- Load custom CSS first -->
+    <link rel="stylesheet" href="styles2.css">
+    <!-- Tailwind CSS CDN - Multiple sources for reliability -->
+    <link href="https://unpkg.com/tailwindcss@^3/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Brown scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fef3c7; /* amber-100 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #d97706, #92400e); /* amber-600 to amber-800 */
+            border-radius: 6px;
+            border: 2px solid #fef3c7;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #b45309, #78350f); /* amber-700 to amber-900 */
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal-scale.revealed {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Parallax effect for backgrounds */
+        .parallax-bg {
+            will-change: transform;
+        }
+
+        /* Smooth hover animations */
+        .smooth-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Gradient text animation */
+        .gradient-text {
+            background: linear-gradient(45deg, #d97706, #f59e0b, #eab308, #ca8a04);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientAnimation 3s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating animation */
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Stagger animation delays */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="min-h-screen bg-gradient-to-br from-amber-50 via-amber-100 to-yellow-100 flex items-center justify-center relative overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-20">
+            <img src="brown1.jpg" alt="Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="flex-1 text-center lg:text-left">
+                    <h1 class="text-5xl lg:text-7xl font-bold text-gray-800 mb-4 scroll-reveal stagger-1">
+                        Hello, It's <span class="text-amber-700 gradient-text">SUMAIYA RAHMAN</span>
+                    </h1>
+                    <h2 class="text-2xl lg:text-3xl text-gray-700 mb-6 font-medium scroll-reveal stagger-2">
+                      Creative Developer · Software Engineering Student
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 max-w-2xl scroll-reveal stagger-3">
+                       I’m a student still finding my lane, happily exploring whatever tech looks exciting. I enjoy problem solving (not every single day if being real!), and I’m always up for learning something new. Have a stroll through my portfolio.I put real effort into it and I hope it shows.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start scroll-reveal stagger-4">
+                        <a href="#projects" class="bg-amber-800 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg smooth-hover">
+                            VIEW MY WORK
+                        </a>
+                        <a href="#contact" class="border-2 border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 smooth-hover">
+                            GET IN TOUCH
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-1 flex justify-center scroll-reveal-scale stagger-5">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-amber-600 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                        <img src="mypic.jpg" alt="Sumaiya Rahman" class="w-80 h-80 object-cover rounded-full shadow-2xl relative z-10 border-4 border-white float-animation">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-amber-600 text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Smooth Transition Gradient -->
+    <div class="h-20 bg-gradient-to-b from-yellow-200 via-amber-100 to-amber-50"></div>
+
+    <!-- About Section -->
+    <section class="py-20 bg-gradient-to-br from-amber-70 via-violet-100 to-orange-100 relative" id="about">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-10">
+            <img src="brown1.jpg" alt="Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal gradient-text">ABOUT ME</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 scroll-reveal-left">
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        I'm a dedicated Software Engineering student with a passion for creating meaningful digital experiences. 
+                        My journey combines technical expertise with creative problem-solving, making me a versatile developer 
+                        ready to tackle real-world challenges.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="text-center p-6 bg-amber-70 rounded-xl border-2 border-amber-100 hover:border-amber-300 transition-colors scroll-reveal-scale stagger-1 smooth-hover">
+                            <div class="text-3xl font-bold text-amber-600 mb-2">3.61</div>
+                            <div class="text-gray-600 font-medium">Current CGPA</div>
+                        </div>
+                        <div class="text-center p-6 bg-amber-100 rounded-xl border-2 border-amber-100 hover:border-amber-300 transition-colors scroll-reveal-scale stagger-2 smooth-hover">
+                            <div class="text-3xl font-bold text-amber-600 mb-2">5+</div>
+                            <div class="text-gray-600 font-medium">Projects Completed</div>
+                        </div>
+                        <div class="text-center p-6 bg-amber-120 rounded-xl border-2 border-amber-100 hover:border-amber-300 transition-colors scroll-reveal-scale stagger-3 smooth-hover">
+                            <div class="text-3xl font-bold text-amber-600 mb-2">2</div>
+                            <div class="text-gray-600 font-medium">Awards Won</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6 scroll-reveal-right">
+                    <div class="flex items-center space-x-4 p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors scroll-reveal stagger-1 smooth-hover">
+                        <i class="fas fa-envelope text-amber-600 text-xl"></i>
+                        <a href="mailto:rsumaiya1602@gmail.com" class="text-gray-700 hover:text-amber-600 transition-colors">rsumaiya1602@gmail.com</a>
+                    </div>
+                    <div class="flex items-center space-x-4 p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors scroll-reveal stagger-2 smooth-hover">
+                        <i class="fas fa-map-marker-alt text-amber-600 text-xl"></i>
+                        <span class="text-gray-700">Mirpur, Dhaka, Bangladesh</span>
+                    </div>
+                    <div class="flex items-center space-x-4 p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors scroll-reveal stagger-3 smooth-hover">
+                        <i class="fas fa-phone text-amber-600 text-xl"></i>
+                        <a href="tel:01740392161" class="text-gray-700 hover:text-amber-600 transition-colors">01740392161</a>
+                    </div>
+                    
+                    <div class="flex space-x-4 pt-4">
+                        <a href="https://www.linkedin.com/in/sumaiya-rahman-1602/" target="_blank" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
+                            <img width="48" height="48" src="https://img.icons8.com/bubbles/100/linkedin.png" alt="linkedin" class="w-full h-full object-contain">
+                        </a>
+                        <a href="https://github.com/SumaiyaRahman16" target="_blank" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
+                            <img width="48" height="48" src="https://img.icons8.com/bubbles/100/github.png" alt="github" class="w-full h-full object-contain">
+                        </a>
+                        <a href="https://leetcode.com/u/80l3AGpQ5X/" target="_blank" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
+                            <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/36/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-green-tal-revivo.png" alt="leetcode" class="w-full h-full object-contain">
+                        </a>
+                        <a href="https://codeforces.com/profile/rsumaiya1602" target="_blank" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
+                            <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/36/external-codeforces-programming-competitions-and-contests-programming-community-logo-green-tal-revivo.png" alt="codeforces" class="w-full h-full object-contain">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative" id="experience">
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">PROFESSIONAL EXPERIENCE</h2>
+            
+            <div class="max-w-6xl mx-auto">
+                <!-- Timeline of Experiences -->
+                <div class="space-y-16">
+                    <!-- First Experience -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <!-- Left side - Personal Image with Whiteboard -->
+                        <div class="relative scroll-reveal-left">
+                            <div class="relative">
+                                <img src="personalex.jpg" alt="Professional Experience" class="w-full h-auto rounded-2xl shadow-2xl">
+                                
+                                <!-- Whiteboard Content Overlay -->
+                                <div class="absolute top-[12%] left-[15%] right-[40%] bottom-[15%] bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg transform rotate-[-2deg]">
+                                    <div class="h-full flex flex-col justify-center items-center space-y-4">
+                                        <div class="text-center">
+                                            <h3 class="text-lg font-bold text-gray-800 mb-3 leading-tight">Software Engineer Intern</h3>
+                                            <div class="flex items-center justify-center gap-3">
+                                                <a href="https://www.linkedin.com/company/azai-labs/posts/?feedView=all" target="_blank" class="text-amber-600 font-semibold text-base">
+                                                    AZAI labs.
+                                                </a>
+                                               
+                                            </div>
+                                             <img src="icons8-3d-pointer.gif" alt="arrow" class="w-15 h-15 ml-20">
+                                            <p class="text-sm text-gray-600 mb-4">08/2025 - Present</p>
+                                            <div class="border-t border-gray-200 pt-3">
+                                                <p class="text-base font-semibold text-green-700">Paid Remote</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right side - Detailed Experience -->
+                        <div class="space-y-8 scroll-reveal-right">
+                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 scroll-reveal stagger-1">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-16 h-16 flex items-center justify-center mr-4">
+                                        <img width="64" height="64" src="https://img.icons8.com/external-wanicon-two-tone-wanicon/64/external-mobile-app-logistics-wanicon-two-tone-wanicon.png" alt="external-mobile-app-logistics-wanicon-two-tone-wanicon"/>
+                                    </div>
+                                    <h4 class="text-xl font-semibold text-gray-800">Mobile Development</h4>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Developing cross-platform mobile applications using Flutter and Dart for both iOS and Android, 
+                                    with integrated APIs and Firebase services for real-time data synchronization.
+                                </p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm">Flutter</span>
+                                    <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm">Dart</span>
+                                    <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm">Firebase</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 scroll-reveal stagger-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-16 h-16 flex items-center justify-center mr-4">
+                                        <img width="48" height="48" src="https://img.icons8.com/clouds/100/bug.png" alt="bug" class="w-full h-full object-contain">
+                                    </div>
+                                    <h4 class="text-xl font-semibold text-gray-800">Automation Testing</h4>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Developing automated end-to-end tests using Playwright and TypeScript, with CI/CD pipeline 
+                                    integration and Allure reporting for comprehensive test analysis.
+                                </p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm">Playwright</span>
+                                    <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
+                                    <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm">CI/CD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Second Experience -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <!-- Left side - Personal Image with Whiteboard -->
+                        <div class="relative scroll-reveal-left">
+                            <div class="relative">
+                                <img src="personalex2.jpg" alt="Innovation Fellowship Experience" class="w-full h-auto rounded-2xl shadow-2xl">
+                                
+                                <!-- Whiteboard Content Overlay -->
+                                <div class="absolute top-[10%] left-[30%] right-[25%] bottom-[12%]   rounded-lg p-4 shadow-lg transform rotate-[2deg]">
+                                    <div class="h-full flex flex-col justify-center items-center">
+                                        <div class="text-center space-y-3">
+                                            <h3 class="text-xl font-bold text-gray-900 leading-tight">Innovation Fellow</h3>
+                                            <a href="https://www.linkedin.com/company/projukti-lipi/ target="_blank class="text-purple-600 font-semibold text-lg hover:text-purple-700 transition-colors duration-200 flex items-center justify-center gap-2">
+                                                PROJUKTI LIPI
+                                            </a>
+                                             <img src="icons8-3d-pointer.gif" alt="arrow" class="w-15 h-15 ml-20">
+                                            <p class="text-base text-gray-600">10/2025 - Present</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right side - Detailed Experience -->
+                        <div class="space-y-8 scroll-reveal-right">
+                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-200 scroll-reveal stagger-1">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-16 h-16 flex items-center justify-center mr-4">
+                                        <img width="48" height="48" src="https://img.icons8.com/clouds/100/innovation.png" alt="innovation" class="w-full h-full object-contain">
+                                    </div>
+                                    <h4 class="text-xl font-semibold text-gray-800">Cross-University Collaboration</h4>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Partnered with cross-university teams from BRACU, AUST, IUB, AIUB and other institutions 
+                                    nationwide to design, test and present practical solutions for real-world challenges.
+                                </p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Innovation</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Collaboration</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Problem Solving</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Design Thinking</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Education Section -->
+    <section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative" id="education">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-10">
+            <img src="education.jpg" alt="Education Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">EDUCATION</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 scroll-reveal stagger-1">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-16 h-16 flex items-center justify-center flex-shrink-0">
+                            <img width="48" height="48" src="https://img.icons8.com/clouds/100/graduation-cap.png" alt="graduation-cap" class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Software Engineering</h3>
+                            <p class="text-cyan-600 font-medium mb-4">Shahjalal University of Science & Technology</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                                <span class="text-gray-600">2023 - Present | Sylhet</span>
+                                <span class=" text-amber-800 px-3 py-1 rounded-full text-sm font-bold">CGPA: 3.61/4.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 scroll-reveal stagger-2">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-16 h-16 flex items-center justify-center flex-shrink-0">
+                            <img width="48" height="48" src="https://img.icons8.com/clouds/100/school.png" alt="school" class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Higher Secondary Certificate</h3>
+                            <p class="text-red-600 font-medium mb-4">Holy Cross College</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                                <span class="text-gray-600">2020 - 2022 | Dhaka</span>
+                                <span class=" text-amber-800 px-3 py-1 rounded-full text-sm font-bold">GPA: 5.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative overflow-hidden" id="skills">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-5">
+            <img src="brown2.jpg" alt="Background" class="w-full h-full object-cover">
+        </div>
+        
+        <!-- Hanging Tech Light -->
+        <div class="absolute top-0 left-8 z-20">
+            <!-- Cable/String -->
+            <div class="w-0.5 h-32 bg-gray-600 mx-auto"></div>
+            <!-- Tech Light Image -->
+            <div class="relative">
+                <img src="tech.jpg" alt="Tech Light" class="w-32 h-32 rounded-full shadow-2xl border-4 border-yellow-300 object-cover animate-pulse">
+                <!-- Light Glow Effect -->
+                <div class="absolute inset-0 rounded-full bg-yellow-200 opacity-30 blur-xl"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">TECHNICAL SKILLS</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-200 scroll-reveal stagger-1 scroll-reveal stagger-3 scroll-reveal stagger-4">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <img width="60" height="60" src="https://img.icons8.com/clouds/100/ruby-programming-language.png" alt="ruby-programming-language" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Programming Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">C</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">C++</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Java</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 scroll-reveal stagger-2">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <img width="60" height="60" src="https://img.icons8.com/bubbles/100/code.png" alt="code" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Frontend Technologies</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">HTML5</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">CSS3</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Bootstrap</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-200 scroll-reveal stagger-3">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <img width="60" height="60" src="https://img.icons8.com/clouds/100/database.png" alt="database" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Backend & Databases</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Flask</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
+                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Firebase</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-200 scroll-reveal stagger-4">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <img width="60" height="60" src="https://img.icons8.com/clouds/100/api.png" alt="api" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Tools & Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Git</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">GitHub</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">VS Code</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Cursor</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Playwright</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-20 bg-white relative" id="projects">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-5">
+            <img src="0b60b1551462535c08973a21acd9c8d6.jpg" alt="Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">FEATURED PROJECTS</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- EchoGuard Project -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-1">
+                    <div class="relative">
+                        <video id="echoVid" controls muted preload="metadata" class="w-full h-64 object-cover">
+                            <source src="echoguard.MOV" type="video/mp4">
+                        </video>
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Featured</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">EchoGuard</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Real-time safety alert system built with MERN stack during an international hackathon. 
+                            Sole participant project that earned a Devpost badge.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">MERN Stack</span>
+                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Real-time</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Hackathon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ScholarBot Project -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-2">
+                    <div class="relative">
+                        <video id="scholarVid" controls muted preload="metadata" class="w-full h-64 object-cover">
+                            <source src="scholarbot.MOV" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">ScholarBot</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            AI-powered scholarship-finding bot that helps users discover scholarships based on their profile. 
+                            Team collaboration project.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">AI</span>
+                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Bot</span>
+                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Team Project</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Snake Game Project -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-3">
+                    <div class="relative">
+                        <video id="snakeVid" controls muted preload="metadata" class="w-full h-64 object-cover">
+                            <source src="snakegame.mov" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Snake Game</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Classic Snake game with custom mechanics and enhanced gameplay. 
+                            Developed solo using C++ and SDL library.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">C++</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">SDL</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Game Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treasure Hunt Project -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
+                    <div class="relative">
+                        <video id="treasureVid" controls muted preload="metadata" class="w-full h-64 object-cover">
+                            <source src="treasurehunt.mov" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Treasure Hunt Game</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Solo Leveling inspired treasure hunt game with puzzles and immersive storytelling. 
+                            Java and OOP concepts.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Java</span>
+                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">OOP</span>
+                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Game Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MeatMatrix Project -->
+                <div class="lg:col-span-2 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-5">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/3 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-12">
+                            <div class="text-center">
+                                <i class="fas fa-database text-6xl text-gray-600 mb-4"></i>
+                                <p class="text-gray-600 font-medium">Inventory Management System</p>
+                            </div>
+                        </div>
+                        <div class="lg:w-2/3 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">MeatMatrix</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Comprehensive meat inventory management system with real-time updates, automated alerts, 
+                                and detailed reporting capabilities for efficient meat storage management.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Inventory Management</span>
+                                <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Database</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Real-time Updates</span>
+                                <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Certificates Section -->
+    <section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative" id="certificates">
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">CERTIFICATES</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Certificate 1 -->
+                <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-1">
+                    <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
+                        <img src="brown2.jpg" alt="Certificate Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-4">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <img width="48" height="48" src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" class="w-full h-full object-contain">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">100% Attendance Certificate</h3>
+                            <p class="text-amber-700 font-medium">Holy Cross College</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certificate 2 -->
+                <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-2">
+                    <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
+                        <img src="brown2.jpg" alt="Certificate Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-4">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <img width="48" height="48" src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" class="w-full h-full object-contain">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">Career Essentials in Generative AI</h3>
+                            <p class="text-amber-700 font-medium">Microsoft & LinkedIn</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certificate 3 -->
+                <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-3">
+                    <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
+                        <img src="brown2.jpg" alt="Certificate Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-4">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <img width="48" height="48" src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" class="w-full h-full object-contain">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">Mathematics Behind LLMs and Transformers</h3>
+                            <p class="text-amber-700 font-medium">Udemy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="py-24 bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 relative" id="awards">
+        <div class="container mx-auto px-8 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-20 scroll-reveal">AWARDS</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden group scroll-reveal stagger-1">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
+                        <img src="award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+                            <div class="w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                                <img width="72" height="72" src="https://img.icons8.com/clouds/100/trophy--v1.png" alt="trophy" class="w-full h-full object-contain">
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">University Innovation Hub Program</h3>
+                            <p class="text-gray-600 mb-8 text-lg">2nd Highest Fund Award</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <img src="uihp.JPG" alt="UIHP Award 1" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="uihp2.jpg" alt="UIHP Award 2" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="uihp3.JPG" alt="UIHP Award 3" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-2">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <img src="award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+                            <div class="w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                                <img width="72" height="72" src="https://img.icons8.com/clouds/100/trophy--v1.png" alt="trophy" class="w-full h-full object-contain">
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Talent Hunt Competition</h3>
+                            <p class="text-gray-600 mb-8 text-lg">3rd Place - SUST Career Club</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="w-full h-80 bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                                <img src="careerclub.jpg" alt="Career Club Award" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-gradient-to-br from-amber-50 via-amber-100 to-yellow-100 text-black relative" id="contact">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-15">
+            <img src="footer.jpg" alt="Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 ">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-16 text-black scroll-reveal">LET'S WORK TOGETHER</h2>
+            
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="p-12 scroll-reveal">
+                  
+                    <p class="text-xl text-amber-100 mb-12 leading-relaxed text-black">
+                        If my portfolio sparks even a little curiosity, let’s talk and collab ideas welcome.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 text-black scroll-reveal stagger-1">
+                        <div class="text-center">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <img width="48" height="48" src="https://img.icons8.com/clouds/100/new-post.png" alt="new-post" class="w-full h-full object-contain">
+                            </div>
+                            <a href="mailto:rsumaiya1602@gmail.com" class="text-black hover:text-gray-600 transition-colors text-sm lg:text-base">
+                                rsumaiya1602@gmail.com
+                            </a>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <img width="48" height="48" src="https://img.icons8.com/dusk/64/phone-disconnected.png" alt="phone-disconnected" class="w-full h-full object-contain">
+                            </div>
+                            <a href="tel:01740392161" class="text-black hover:text-gray-600 transition-colors text-sm lg:text-base">
+                                01740392161
+                            </a>
+                        </div>  
+                        
+                        <div class="text-center">
+                             <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <img width="48" height="48" src="https://img.icons8.com/clouds/100/linkedin.png" alt="linkedin" class="w-full h-full object-contain">
+                            </div>
+                            <a href="https://www.linkedin.com/in/sumaiya-rahman-1602/" target="_blank" class="text-black hover:text-gray-600 transition-colors text-sm lg:text-base">
+                                LinkedIn
+                            </a>
+                          
+                                            
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <img width="48" height="48" src="https://img.icons8.com/pulsar-color/48/location.png" alt="location" class="w-full h-full object-contain">
+                            </div>
+                            <span class="text-black text-sm lg:text-base">Mirpur, Dhaka, Bangladesh</span>
+                        </div>
+                    </div>
+                    
+
+               
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations with Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const scrollObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll reveal elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+            scrollElements.forEach(el => {
+                scrollObserver.observe(el);
+            });
+        });
+
+        // Parallax effect for background images
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-bg');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+
+            // Scroll indicator animation
+            const scrollIndicator = document.querySelector('.fas.fa-chevron-down');
+            if (scrollIndicator) {
+                if (window.scrollY > 100) {
+                    scrollIndicator.parentElement.style.opacity = '0';
+                } else {
+                    scrollIndicator.parentElement.style.opacity = '1';
+                }
+            }
+        });
+
+        // Add hover effects to cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.smooth-hover');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                    this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+
+        // Add floating animation to profile image
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileImg = document.querySelector('img[alt="Sumaiya Rahman"]');
+            if (profileImg) {
+                profileImg.classList.add('float-animation');
+            }
+        });
+
+        // Progressive loading for sections
+        const sectionObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const section = entry.target;
+                    const cards = section.querySelectorAll('.scroll-reveal, .scroll-reveal-scale');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('revealed');
+                        }, index * 100);
+                    });
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Observe sections for progressive loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        });
+
+        // Force mute all videos permanently
+        const videos = [
+            { id: 'echoVid', element: null },
+            { id: 'scholarVid', element: null },
+            { id: 'snakeVid', element: null },
+            { id: 'treasureVid', element: null }
+        ];
+
+        videos.forEach(video => {
+            video.element = document.getElementById(video.id);
+            if (video.element) {
+                const forceMute = () => { 
+                    video.element.muted = true; 
+                    video.element.volume = 0; 
+                };
+                forceMute();
+                video.element.addEventListener('volumechange', forceMute);
+                video.element.addEventListener('loadedmetadata', forceMute);
+                video.element.addEventListener('canplay', forceMute);
+            }
+        });
+    </script>
+</body>
+</html>
