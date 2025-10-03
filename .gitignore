@@ -1,18 +1,4 @@
-# Video files
-*.MOV
-*.mov
-*.mp4
-*.MP4
-*.avi
-*.AVI
-*.mkv
-*.MKV
-*.wmv
-*.WMV
-*.flv
-*.FLV
-
-# Large media files
+# Large media files (keeping PDFs restricted)
 *.pdf
 *.PDF
 
