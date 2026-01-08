@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumaiya Rahman - CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom right, #fffbeb, #fef3c7, #fde68a);
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #d97706, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4b5563;
+        }
+
+        .contact-item i {
+            color: #d97706;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-links img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .download-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(to right, #d97706, #b45309);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .download-cv:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #f59e0b;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 2px solid #fde68a;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #d97706;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #fffbeb;
+            border-radius: 0.75rem;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .company {
+            color: #d97706;
+            font-weight: 500;
+        }
+
+        .date {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #dcfce7;
+            color: #16a34a;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: #fef3c7;
+            color: #92400e;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: #fffbeb;
+            border-radius: 0.75rem;
+            border: 2px solid #fde68a;
+        }
+
+        .skill-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 2px solid #f3f4f6;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f3f4f6;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Certificates & Awards */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: #fffbeb;
+            border-radius: 0.75rem;
+            border: 2px solid #fde68a;
+        }
+
+        .award-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .award-images img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .download-cv {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <img src="resPic/mypic.jpg" alt="Sumaiya Rahman" class="profile-img">
+            <h1 class="name">SUMAIYA RAHMAN</h1>
+            <p class="title">Creative Developer · Software Engineering Student</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>rsumaiya1602@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>01740392161</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Mirpur, Dhaka, Bangladesh</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/sumaiya-rahman-1602/" target="_blank">
+                    <img src="https://img.icons8.com/bubbles/100/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://github.com/SumaiyaRahman16" target="_blank">
+                    <img src="https://img.icons8.com/bubbles/100/github.png" alt="GitHub">
+                </a>
+                <a href="https://leetcode.com/u/80l3AGpQ5X/" target="_blank">
+                    <img src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/36/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-green-tal-revivo.png" alt="LeetCode">
+                </a>
+                <a href="https://codeforces.com/profile/rsumaiya1602" target="_blank">
+                    <img src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/36/external-codeforces-programming-competitions-and-contests-programming-community-logo-green-tal-revivo.png" alt="Codeforces">
+                </a>
+            </div>
+
+            <a href="Mycv.pdf" download="Sumaiya_Rahman_CV.pdf" class="download-cv">
+                <i class="fas fa-download"></i>
+                Download CV
+            </a>
+        </header>
+
+        <!-- About Section -->
+        <section class="section">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="about-content">
+                <div>
+                    <p style="margin-bottom: 1rem;">
+                        I'm a dedicated Software Engineering student with a passion for creating meaningful digital experiences. 
+                        My journey combines technical expertise with creative problem-solving, making me a versatile developer 
+                        ready to tackle real-world challenges.
+                    </p>
+                    <p>
+                        I'm a student still finding my lane, happily exploring whatever tech looks exciting. I enjoy problem solving 
+                        (not every single day if being real!), and I'm always up for learning something new.
+                    </p>
+                </div>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">3.61</div>
+                        <div class="stat-label">Current CGPA</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Awards</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section">
+            <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">Software Engineer Intern</h3>
+                        <p class="company">AZAI labs</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p class="date">08/2025 - 10/2025</p>
+                        <span class="badge">Paid Remote</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 1rem;">
+                    Developing cross-platform mobile applications using Flutter and Dart for both iOS and Android, 
+                    with integrated APIs and Firebase services for real-time data synchronization.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    Developing automated end-to-end tests using Playwright and TypeScript, with CI/CD pipeline 
+                    integration and Allure reporting for comprehensive test analysis.
+                </p>
+                <div class="tags">
+                    <span class="tag">Flutter</span>
+                    <span class="tag">Dart</span>
+                    <span class="tag">Firebase</span>
+                    <span class="tag">Playwright</span>
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">CI/CD</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">Innovation Fellow</h3>
+                        <p class="company">PROJUKTI LIPI</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p class="date">10/2025 - Present</p>
+                    </div>
+                </div>
+                <p style="margin-bottom: 1rem;">
+                    Partnered with cross-university teams from BRACU, AUST, IUB, AIUB and other institutions 
+                    nationwide to design, test and present practical solutions for real-world challenges.
+                </p>
+                <div class="tags">
+                    <span class="tag">Innovation</span>
+                    <span class="tag">Collaboration</span>
+                    <span class="tag">Problem Solving</span>
+                    <span class="tag">Design Thinking</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">Contract Software Development Associate</h3>
+                        <p class="company">Freelance</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p class="date">11/2025 - Present</p>
+                        <span class="badge">Paid Remote</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 1rem;">
+                   Directly supporting senior-level projects by developing scalable automation scripts and logic using TypeScript. Architecting robust system workflows to improve software reliability and deployment efficiency.
+                </p>
+                <div class="tags">
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">Playwright</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section">
+            <h2 class="section-title">EDUCATION</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">Software Engineering</h3>
+                        <p class="company">Shahjalal University of Science & Technology</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p class="date">2023 - Present | Sylhet</p>
+                        <span class="badge">CGPA: 3.61/4.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">Higher Secondary Certificate</h3>
+                        <p class="company">Holy Cross College</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p class="date">2020 - 2022 | Dhaka</p>
+                        <span class="badge">GPA: 5.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section">
+            <h2 class="section-title">TECHNICAL SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/clouds/100/ruby-programming-language.png" alt="Programming" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3>Programming Languages</h3>
+                    <div class="tags">
+                        <span class="tag">C</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Flutter</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/bubbles/100/code.png" alt="Frontend" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3>Frontend Technologies</h3>
+                    <div class="tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/clouds/100/database.png" alt="Backend" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3>Backend & Databases</h3>
+                    <div class="tags">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Firebase</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/clouds/100/api.png" alt="Tools" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3>Tools & Platforms</h3>
+                    <div class="tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">VS Code</span>
+                        <span class="tag">Cursor</span>
+                        <span class="tag">Playwright</span>
+                        <span class="tag">Jira</span>
+                        <span class="tag">n8n</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <h2 class="section-title">FEATURED PROJECTS</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">EchoGuard</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem;">
+                            Real-time safety alert system built with MERN stack during an international hackathon. 
+                            Sole participant project that earned a Devpost badge.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">MERN Stack</span>
+                            <span class="tag">Real-time</span>
+                            <span class="tag">Hackathon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">ScholarBot</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem;">
+                            AI-powered scholarship-finding bot that helps users discover scholarships based on their profile. 
+                            Team collaboration project.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">Bot</span>
+                            <span class="tag">Team Project</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Snake Game</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem;">
+                            Classic Snake game with custom mechanics and enhanced gameplay. 
+                            Developed solo using C++ and SDL library.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">SDL</span>
+                            <span class="tag">Game Dev</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Treasure Hunt Game</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem;">
+                            Solo Leveling inspired treasure hunt game with puzzles and immersive storytelling. 
+                            Java and OOP concepts.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">OOP</span>
+                            <span class="tag">Game Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">MeatMatrix</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem;">
+                            Comprehensive meat inventory management system with real-time updates, automated alerts, 
+                            and detailed reporting capabilities.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Inventory</span>
+                            <span class="tag">Database</span>
+                            <span class="tag">Reporting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Daktar AI</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem;">
+                            AI-powered healthcare assistant providing symptom analysis, health tips, and appointment scheduling. 
+                            Built with Flutter and Dart.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">AI</span>
+                            <span class="tag">Flutter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section class="section">
+            <h2 class="section-title">CERTIFICATES</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div style="width: 48px; height: 48px; margin: 0 auto 1rem;">
+                        <img src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">100% Attendance Certificate</h3>
+                    <p style="color: #d97706; font-weight: 500;">Holy Cross College</p>
+                </div>
+
+                <div class="cert-card">
+                    <div style="width: 48px; height: 48px; margin: 0 auto 1rem;">
+                        <img src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Career Essentials in Generative AI</h3>
+                    <p style="color: #d97706; font-weight: 500;">Microsoft & LinkedIn</p>
+                </div>
+
+                <div class="cert-card">
+                    <div style="width: 48px; height: 48px; margin: 0 auto 1rem;">
+                        <img src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Mathematics Behind LLMs and Transformers</h3>
+                    <p style="color: #d97706; font-weight: 500;">Udemy</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards Section -->
+        <section class="section">
+            <h2 class="section-title">AWARDS</h2>
+            
+            <div class="experience-item" style="margin-bottom: 1.5rem;">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <div style="width: 72px; height: 72px; margin: 0 auto 1rem;">
+                        <img src="https://img.icons8.com/clouds/100/trophy--v1.png" alt="trophy" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3 class="job-title">University Innovation Hub Program</h3>
+                    <p class="company">2nd Highest Fund Award</p>
+                </div>
+                <div class="award-images">
+                    <img src="resPic/uihp.JPG" alt="UIHP Award 1">
+                    <img src="resPic/uihp2.jpg" alt="UIHP Award 2">
+                    <img src="resPic/uihp3.JPG" alt="UIHP Award 3">
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div style="text-align: center;">
+                    <div style="width: 72px; height: 72px; margin: 0 auto 1rem;">
+                        <img src="https://img.icons8.com/clouds/100/trophy--v1.png" alt="trophy" style="width: 100%; height: 100%;">
+                    </div>
+                    <h3 class="job-title">Talent Hunt Competition</h3>
+                    <p class="company">3rd Place - SUST Career Club</p>
+                    <div style="margin-top: 1rem; max-width: 400px; margin-left: auto; margin-right: auto;">
+                        <img src="resPic/careerclub.jpg" alt="Career Club Award" style="width: 100%; border-radius: 0.5rem;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
