@@ -123,6 +123,26 @@
         .stagger-4 { transition-delay: 0.4s; }
         .stagger-5 { transition-delay: 0.5s; }
         .stagger-6 { transition-delay: 0.6s; }
+
+        /* Mobile-responsive video containers */
+@media (max-width: 640px) {
+    video {
+        height: 200px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    video {
+        height: 220px !important;
+    }
+}
+
+/* For larger mobile screens */
+@media (min-width: 641px) and (max-width: 1024px) {
+    video {
+        height: 240px !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -344,7 +364,7 @@ Now in my third year, I have gained five months of professional experience, incl
                         </div>
                         
                         <!-- Right side - Detailed Experience -->
-                        <div class="space-y-8 scroll-reveal-right">
+                        <div class="space-y-8
                             <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-200 scroll-reveal stagger-1">
                                 <div class="flex items-center mb-6">
                                     <div class="w-16 h-16 flex items-center justify-center mr-4">
@@ -589,8 +609,50 @@ Now in my third year, I have gained five months of professional experience, incl
             <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">FEATURED PROJECTS</h2>
             
             <div class="grid lg:grid-cols-2 gap-8">
-                <!-- EchoGuard Project -->
+                <!-- DevSnippet Marketplace Project -->
                 <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-1">
+                    <div class="relative">
+                        <!-- Placeholder for DevSnippet video/image -->
+                        <div class="w-full h-64 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center relative">
+                            <div class="text-center text-white">
+                                <i class="fas fa-code text-6xl mb-4 opacity-80"></i>
+                                <h4 class="text-2xl font-bold">DevSnippet</h4>
+                                <p class="text-sm opacity-90">Premium Code Marketplace</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">Latest</div>
+                        <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">Interview Project</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">DevSnippet Marketplace</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                           Developed as a technical interview task, this project prioritizes backend architecture and security. I engineered a RESTful API using Node.js/Express, featuring JWT authentication and Bcrypt for robust user protection. I integrated the Stripe API for secure payments and optimized MongoDB schemas for data persistence. The entire system was built and fully deployed on Render within a strict deadline
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">React.js</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Stripe API</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">JWT Auth</span>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Vite</span>
+                        </div>
+                        <!-- Deployment and GitHub links -->
+                        <div class="flex gap-4">
+                            <a href="https://backend-api-g1ye.onrender.com/" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/SumaiyaRahman16/backend-api" target="_blank" class="border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EchoGuard Project -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-2">
                     <div class="relative">
                         <video id="echoVid" controls muted preload="metadata" class="w-full h-64 object-cover">
                             <source src="resVid/echoGuard.mov" type="video/mp4">
@@ -605,7 +667,7 @@ Now in my third year, I have gained five months of professional experience, incl
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">MERN Stack</span>
-                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Google API </span>
+                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Google API</span>
                             <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Real-time</span>
                             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Hackathon</span>
                             <span class="bg-yellow-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Solo Project</span>
@@ -615,7 +677,7 @@ Now in my third year, I have gained five months of professional experience, incl
                 </div>
 
                 <!-- ScholarBot Project -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-2">
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-3">
                     <div class="relative">
                         <video id="scholarVid" controls muted preload="metadata" class="w-full h-64 object-cover">
                             <source src="resVid/scholarBot.mov" type="video/mp4">
@@ -639,7 +701,7 @@ Now in my third year, I have gained five months of professional experience, incl
                 </div>
 
                 <!-- Snake Game Project -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-3">
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
                     <div class="relative">
                         <video id="snakeVid" controls muted preload="metadata" class="w-full h-64 object-cover">
                             <source src="resVid/snakeGame.mov" type="video/mp4">
@@ -680,54 +742,134 @@ Now in my third year, I have gained five months of professional experience, incl
                     </div>
                 </div>
 
-                <!-- MeatMatrix Project -->
-                
-                               <!-- daktar ai  -->
-                
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
+                <!-- Daktar AI Project -->
+                <!-- <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
                     <div class="relative">
-                        <video id="treasureVid" controls muted preload="metadata" class="w-full h-64 object-cover">
-                            <source src="daktarai.mov" type="video/mp4">
+                        <video id="daktarVid" controls muted preload="metadata" class="w-full h-48 sm:h-56 md:h-64 object-cover rounded-t-2xl">
+                            <source src="resVid/daktarAi.mov" type="video/mp4">
+                            <source src="resVid/daktarAi.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Daktar Ai [Internship Project ] </h3>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Daktar AI [Internship Project]</h3>
                         <p class="text-gray-600 mb-6 leading-relaxed">
-                                 AI-powered healthcare assistant providing symptom analysis, health tips, and appointment scheduling. 
-                                Built with flutter and dart. Built  the eyecatching interface . 
+                            AI-powered healthcare assistant providing symptom analysis, health tips, and appointment scheduling. 
+                            Built with Flutter and Dart. Built the eyecatching interface.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                                <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Flutter </span>
-                                <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">UI</span>
-                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Health Care </span>
-                                <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
+                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
+                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">UI</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Health Care</span>
+                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
                         </div>
                     </div>
-                </div>
-                            <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
+                </div> -->
+
+                <!-- MeatMatrix Project -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
                     <div class="relative">
-                        <video id="treasureVid" controls muted preload="metadata" class="w-full h-64 object-cover">
-                            <source src="daktarai.mov" type="video/mp4">
+                        <video id="meatMatrixVid" controls muted preload="metadata" class="w-full h-64 object-cover">
+                            <source src="resVid/meatMatrix.mov" type="video/mp4">
+                            <source src="resVid/meatMatrix.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">MeatMatrix </h3>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">MeatMatrix</h3>
                         <p class="text-gray-600 mb-6 leading-relaxed">
-                                Comprehensive meat inventory management system with real-time updates, automated alerts, 
-                                and detailed reporting capabilities for efficient meat storage management.
+                            Comprehensive meat inventory management system with real-time updates, automated alerts, 
+                            and detailed reporting capabilities for efficient meat storage management.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                                <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Inventory Management</span>
-                                <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">HTML ,CSS ,JS</span>
-                                <span class="bg-yellow-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">My SQL</span>
-                                <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
+                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Inventory Management</span>
+                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">HTML, CSS, JS</span>
+                            <span class="bg-yellow-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+ 
+    
+    <!-- Daktar AI - Standalone Project Section -->
+<section class="py-12 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 relative">
+    <div class="container mx-auto px-6 relative z-10">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center text-gray-800 mb-12 scroll-reveal">INTERNSHIP PROJECT</h2>
+        
+        <!-- Single Project Container -->
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal">
+                <div class="relative">
+                    <!-- Portrait Video Container - Matching your video's aspect ratio -->
+                    <div class="flex justify-center bg-gray-100 py-8">
+                        <div class="w-80 h-[540px] overflow-hidden rounded-xl shadow-lg">
+                            <video id="daktarVid" controls muted preload="metadata" class="w-full h-full object-contain">
+                                <source src="resVid/daktarAi.mov" type="video/mp4">
+                                <source src="resVid/daktarAi.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <!-- Project Badge -->
+                    <div class="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                        <i class="fas fa-briefcase mr-2"></i>
+                        Internship Project
+                    </div>
+                </div>
+                
+                <!-- Project Content -->
+                <div class="p-8 lg:p-12">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-stethoscope text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-800">Daktar AI</h3>
+                            <p class="text-purple-600 font-semibold">Healthcare Assistant Platform</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        AI-powered healthcare assistant providing symptom analysis, health tips, and appointment scheduling. 
+                        Built with Flutter and Dart during my internship at AZAI Labs. I focused on creating an eye-catching 
+                        and intuitive user interface that enhances the user experience for healthcare consultations.
+                    </p>
+                    
+                    <!-- Tech Stack -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Technologies Used:</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">Flutter</span>
+                            <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">Dart</span>
+                            <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">UI/UX Design</span>
+                            <span class="bg-pink-100 text-pink-800 px-4 py-2 rounded-full text-sm font-medium">Healthcare</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium">Mobile Development</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Highlights -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-purple-50 rounded-xl p-6">
+                            <h5 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                <i class="fas fa-mobile-alt text-purple-600 mr-2"></i>
+                                Cross-Platform
+                            </h5>
+                            <p class="text-gray-600 text-sm">Built for both iOS and Android with Flutter framework</p>
+                        </div>
+                        
+                        <div class="bg-indigo-50 rounded-xl p-6">
+                            <h5 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                <i class="fas fa-palette text-indigo-600 mr-2"></i>
+                                UI Focus
+                            </h5>
+                            <p class="text-gray-600 text-sm">Designed intuitive and accessible healthcare interface</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     
     <!-- Certificates Section -->
     <section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative" id="certificates">
