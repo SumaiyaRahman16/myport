@@ -1,0 +1,14 @@
+:root {
+    --primary: #e99f50;
+    /* Main amber */
+    --primary-light: #f7a65b;
+    --secondary: #f8ed71;
+
+    --background: #fffbeb;
+    --surface: #ffffff;
+
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+
+    --border: #e5e7eb;
+}

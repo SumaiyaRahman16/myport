@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +8,66 @@
     <!-- <link href="https://unpkg.com/tailwindcss@^3/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script> -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style type="text/tailwindcss">
+        /* ============================================
+           GLOBAL THEME VARIABLES
+           Edit these to re-skin the whole portfolio.
+           ============================================ */
+        :root {
+            --primary: #e99f50;
+            /* Main amber */
+            --primary-light: #f7a65b;
+            --secondary: #f8ed71;
+
+            --background: #fffbeb;  
+            --surface: #ffffff;
+
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+
+            --border: #e5e7eb;
+        }
+
+        /* Wire the variables above into Tailwind's design tokens (v4),
+           so utility classes like bg-primary, text-secondary, border-line,
+           from-primary/20, etc. are generated from these vars automatically. */
+        @theme {
+            --color-primary: var(--primary);
+            --color-primary-light: var(--primary-light);
+            --color-secondary: var(--secondary);
+            --color-surface: var(--surface);
+            --color-canvas: var(--background);
+            --color-ink: var(--text-primary);
+            --color-muted: var(--text-secondary);
+            --color-line: var(--border);
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+        }
+
         /* Brown scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #fef3c7; /* amber-100 */
+            background: var(--background);
         }
+
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #d97706, #92400e); /* amber-600 to amber-800 */
+            background: linear-gradient(180deg, var(--primary-light), var(--primary));
             border-radius: 6px;
-            border: 2px solid #fef3c7;
+            border: 2px solid var(--background);
         }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #b45309, #78350f); /* amber-700 to amber-900 */
+            background: linear-gradient(180deg, var(--primary), color-mix(in srgb, var(--primary) 70%, black));
         }
 
         /* Smooth scrolling */
@@ -90,7 +132,7 @@
 
         /* Gradient text animation */
         .gradient-text {
-            background: linear-gradient(45deg, #d97706, #f59e0b, #eab308, #ca8a04);
+            background: linear-gradient(45deg, var(--primary), var(--primary-light), var(--secondary), var(--primary));
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -99,9 +141,17 @@
         }
 
         @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Floating animation */
@@ -110,56 +160,94 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* Stagger animation delays */
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-        .stagger-4 { transition-delay: 0.4s; }
-        .stagger-5 { transition-delay: 0.5s; }
-        .stagger-6 { transition-delay: 0.6s; }
+        .stagger-1 {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-5 {
+            transition-delay: 0.5s;
+        }
+
+        .stagger-6 {
+            transition-delay: 0.6s;
+        }
 
         /* Mobile-responsive video containers */
         @media (max-width: 640px) {
-            video { height: 200px !important; }
+            video {
+                height: 200px !important;
+            }
         }
+
         @media (max-width: 768px) {
-            video { height: 220px !important; }
+            video {
+                height: 220px !important;
+            }
         }
+
         @media (min-width: 641px) and (max-width: 1024px) {
-            video { height: 240px !important; }
+            video {
+                height: 240px !important;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Hero Section -->
-    <section class="min-h-screen bg-gradient-to-br from-amber-20 via-amber-10 to-yellow-70 flex items-center justify-center relative overflow-hidden">
+    <section
+        class="min-h-screen bg-gradient-to-br from-primary/4 via-primary/5 to-secondary/4 flex items-center justify-center relative overflow-hidden">
         <!-- Background Image -->
         <div class="absolute inset-0 opacity-20">
-            <img src="resPic/brown1.jpg" alt="Background" class="w-full h-full object-cover">
+            <img src="resPic/forDesign/brown1.jpg" alt="Background" class="w-full h-full object-cover">
         </div>
-        
+
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
                 <div class="flex-1 text-center lg:text-left">
-                    <h1 class="text-5xl lg:text-7xl font-bold text-gray-800 mb-4 scroll-reveal stagger-1">
-                        Hello, It's <span class="text-amber-700 gradient-text">SUMAIYA RAHMAN</span>
+                    <h1 class="text-5xl lg:text-7xl font-bold text-ink mb-4 scroll-reveal stagger-1">
+                        Hello, It's <span class="text-primary gradient-text">SUMAIYA RAHMAN</span>
                     </h1>
-                    <h2 class="text-2xl lg:text-3xl text-gray-700 mb-6 font-medium scroll-reveal stagger-2">
-                 Associate Software Engineer 
+                    <h2 class="text-2xl lg:text-3xl text-muted mb-6 font-medium scroll-reveal stagger-2">
+                        Associate Software Engineer
                     </h2>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start scroll-reveal stagger-4">
-                        <a href="#projects" class="bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-700 hover:to-amber-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg smooth-hover">
+
+                    <div
+                        class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start scroll-reveal stagger-4">
+                        <a href="#projects"
+                            class="bg-primary-light hover:from-[color-mix(in_srgb,var(--secondary)_85%,black)] hover:to-[color-mix(in_srgb,var(--primary)_85%,black)] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg smooth-hover">
                             VIEW MY WORK
                         </a>
-                        <a href="#contact" class="border-2 border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 smooth-hover">
+                        <a href="#contact"
+                            class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 smooth-hover">
                             GET IN TOUCH
                         </a>
-                        <a href="Mycv.pdf" download="Mycv.pdf" class="bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-700 hover:to-amber-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg smooth-hover flex items-center gap-2">
+                        <a href="resPic/SumaiyaRahmanCV.pdf" download="SumaiyCV"
+                            class="bg-secondary/50 hover:from-[color-mix(in_srgb,var(--secondary)_85%,black)] hover:to-[color-mix(in_srgb,var(--primary)_85%,black)] text-black px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg smooth-hover flex items-center gap-2">
                             <i class="fas fa-download"></i>
                             DOWNLOAD CV
                         </a>
@@ -167,88 +255,115 @@
                 </div>
                 <div class="flex-1 flex justify-center scroll-reveal-scale stagger-5">
                     <div class="relative">
-                        <div class="absolute inset-0 bg-amber-600 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-                        <img src="resPic/mypic.jpg" alt="Sumaiya Rahman" class="w-80 h-80 object-cover rounded-full shadow-2xl relative z-10 border-4 border-white float-animation">
+                        <div class="absolute inset-0 bg-primary rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                        <img src="resPic/mypic.jpg" alt="Sumaiya Rahman"
+                            class="w-80 h-80 object-cover rounded-full shadow-2xl relative z-10 border-4 border-surface float-animation">
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-amber-600 text-2xl"></i>
+            <i class="fas fa-chevron-down text-primary text-2xl"></i>
         </div>
     </section>
 
     <!--  transition gradient -->
-    <div class="h-10 bg-gradient-to-b from-yellow-100 via-amber-100 to-amber-0"></div>
+    <div class="h-10 bg-gradient-to-b from-secondary/15 via-primary/15 to-primary/15"></div>
 
     <!-- About Section -->
-     <section class="py-20 bg-gradient-to-br from-amber-70 via-violet-100 to-orange-100 relative" id="about">
-      
+    <section class="py-20 bg-gradient-to-br from-primary/12  to-secondary/12 relative" id="about">
+
         <div class="absolute inset-0 opacity-10">
-            <img src="resPic/brown1.jpg" alt="Background" class="w-full h-full object-cover">
+            <img src="resPic/forDesign/brown1.jpg" alt="Background" class="w-full h-full object-cover">
         </div>
-        
+
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal gradient-text">ABOUT ME</h2>
-            
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-ink mb-16 scroll-reveal gradient-text">ABOUT ME
+            </h2>
+
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8 scroll-reveal-left">
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                 With a background in Software Engineering from SUST, I bring 1 year of professional experience in Full-Stack and Mobile development. I have a proven track record in building scalable APIs and implementing automated testing for production-ready applications. Proficient in Git version control and experienced in modern professional development workflows, I focus on delivering high-quality, reliable software solutions within collaborative environments.
+                    <p class="text-lg text-muted leading-relaxed">
+                        With a background in Software Engineering from SUST, I bring 1 year of professional experience
+                        in Full-Stack and Mobile development. I have a proven track record in building scalable APIs and
+                        implementing automated testing for production-ready applications. Proficient in Git version
+                        control and experienced in modern professional development workflows, I focus on delivering
+                        high-quality, reliable software solutions within collaborative environments.
                     </p>
                     <div class="grid grid-cols-3 gap-6">
-                        <div class="text-center p-6 bg-amber-70 rounded-xl border-2 border-amber-100 hover:border-amber-300 transition-colors scroll-reveal-scale stagger-1 smooth-hover">
-                            <div class="text-3xl font-bold text-amber-600 mb-2">3.61</div>
-                            <div class="text-gray-600 font-medium">Current CGPA</div>
+                        <div
+                            class="text-center p-6 bg-primary/12 rounded-xl border-2 border-primary/15 hover:border-primary/40 transition-colors scroll-reveal-scale stagger-1 smooth-hover">
+                            <div class="text-3xl font-bold text-primary mb-2">3.61</div>
+                            <div class="text-muted font-medium">Current CGPA</div>
                         </div>
-                        <div class="text-center p-6 bg-amber-100 rounded-xl border-2 border-amber-100 hover:border-amber-300 transition-colors scroll-reveal-scale stagger-2 smooth-hover">
-                            <div class="text-3xl font-bold text-amber-600 mb-2">5+</div>
-                            <div class="text-gray-600 font-medium">Projects Completed</div>
+                        <div
+                            class="text-center p-6 bg-primary/15 rounded-xl border-2 border-primary/15 hover:border-primary/40 transition-colors scroll-reveal-scale stagger-2 smooth-hover">
+                            <div class="text-3xl font-bold text-primary mb-2">5+</div>
+                            <div class="text-muted font-medium">Projects Completed</div>
                         </div>
-                        <div class="text-center p-6 bg-amber-120 rounded-xl border-2 border-amber-100 hover:border-amber-300 transition-colors scroll-reveal-scale stagger-3 smooth-hover">
-                            <div class="text-3xl font-bold text-amber-600 mb-2">2</div>
-                            <div class="text-gray-600 font-medium">Awards Won</div>
+                        <div
+                            class="text-center p-6 bg-primary/18 rounded-xl border-2 border-primary/15 hover:border-primary/40 transition-colors scroll-reveal-scale stagger-3 smooth-hover">
+                            <div class="text-3xl font-bold text-primary mb-2">2</div>
+                            <div class="text-muted font-medium">Awards Won</div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="space-y-6 scroll-reveal-right">
-                    <div class="flex items-center space-x-4 p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors scroll-reveal stagger-1 smooth-hover">
-                        <i class="fas fa-envelope text-amber-600 text-xl"></i>
-                        <a href="mailto:rsumaiya1602@gmail.com" class="text-gray-700 hover:text-amber-600 transition-colors">rsumaiya1602@gmail.com</a>
+                    <div
+                        class="flex items-center space-x-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/15 transition-colors scroll-reveal stagger-1 smooth-hover">
+                        <i class="fas fa-envelope text-primary text-xl"></i>
+                        <a href="mailto:rsumaiya1602@gmail.com"
+                            class="text-muted hover:text-primary transition-colors">rsumaiya1602@gmail.com</a>
                     </div>
-                    <div class="flex items-center space-x-4 p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors scroll-reveal stagger-2 smooth-hover">
-                        <i class="fas fa-map-marker-alt text-amber-600 text-xl"></i>
-                        <span class="text-gray-700">Mirpur, Dhaka, Bangladesh</span>
+                    <div
+                        class="flex items-center space-x-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/15 transition-colors scroll-reveal stagger-2 smooth-hover">
+                        <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                        <span class="text-muted">Mirpur, Dhaka, Bangladesh</span>
                     </div>
-                    <div class="flex items-center space-x-4 p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors scroll-reveal stagger-3 smooth-hover">
-                        <i class="fas fa-phone text-amber-600 text-xl"></i>
-                        <a href="tel:01740392161" class="text-gray-700 hover:text-amber-600 transition-colors">01740392161</a>
+                    <div
+                        class="flex items-center space-x-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/15 transition-colors scroll-reveal stagger-3 smooth-hover">
+                        <i class="fas fa-phone text-primary text-xl"></i>
+                        <a href="tel:01740392161"
+                            class="text-muted hover:text-primary transition-colors">01740392161</a>
                     </div>
-                    
+
                     <div class="flex space-x-4 pt-4">
-                        <a href="https://www.linkedin.com/in/sumaiya-rahman-1602/" target="_blank" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
-                            <img width="48" height="48" src="https://img.icons8.com/bubbles/100/linkedin.png" alt="linkedin" class="w-full h-full object-contain">
+                        <a href="https://www.linkedin.com/in/sumaiya-rahman-1602/" target="_blank"
+                            class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
+                            <img width="48" height="48" src="https://img.icons8.com/bubbles/100/linkedin.png"
+                                alt="linkedin" class="w-full h-full object-contain">
                         </a>
-                        <a href="https://github.com/SumaiyaRahman16" target="_blank" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
-                            <img width="48" height="48" src="https://img.icons8.com/bubbles/100/github.png" alt="github" class="w-full h-full object-contain">
+                        <a href="https://github.com/SumaiyaRahman16" target="_blank"
+                            class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
+                            <img width="48" height="48" src="https://img.icons8.com/bubbles/100/github.png" alt="github"
+                                class="w-full h-full object-contain">
                         </a>
-                        <a href="https://leetcode.com/u/80l3AGpQ5X/" target="_blank" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
-                            <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/36/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-green-tal-revivo.png" alt="leetcode" class="w-full h-full object-contain">
+                        <a href="https://leetcode.com/u/80l3AGpQ5X/" target="_blank"
+                            class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
+                            <img width="48" height="48"
+                                src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/36/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-green-tal-revivo.png"
+                                alt="leetcode" class="w-full h-full object-contain">
                         </a>
-                        <a href="https://codeforces.com/profile/rsumaiya1602" target="_blank" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
-                            <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/36/external-codeforces-programming-competitions-and-contests-programming-community-logo-green-tal-revivo.png" alt="codeforces" class="w-full h-full object-contain">
+                        <a href="https://codeforces.com/profile/rsumaiya1602" target="_blank"
+                            class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
+                            <img width="48" height="48"
+                                src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/36/external-codeforces-programming-competitions-and-contests-programming-community-logo-green-tal-revivo.png"
+                                alt="codeforces" class="w-full h-full object-contain">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-<section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative" id="experience">
+
+    <section class="py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-orange-50 relative" id="experience">
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">PROFESSIONAL EXPERIENCE</h2>
-            
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-ink mb-16 scroll-reveal gradient-text">
+                PROFESSIONAL EXPERIENCE
+            </h2>
+
             <div class="max-w-6xl mx-auto">
                 <!-- Timeline of Experiences -->
                 <div class="space-y-16">
@@ -257,217 +372,249 @@
                         <!-- Left side - Personal Image with Whiteboard -->
                         <div class="relative scroll-reveal-left">
                             <div class="relative">
-                                <img src="resPic/personalex.jpg" alt="Professional Experience" class="w-full h-auto rounded-2xl shadow-2xl">
-                                
+                                <img src="resPic/forDesign/personalex.jpg" alt="Professional Experience"
+                                    class="w-full h-auto rounded-2xl shadow-2xl">
+
                                 <!-- Whiteboard Content Overlay -->
-                                <div class="absolute top-[12%] left-[15%] right-[40%] bottom-[15%] bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg transform rotate-[-2deg]">
+                                <div
+                                    class="absolute top-[12%] left-[15%] right-[40%] bottom-[15%] bg-surface/90 backdrop-blur-sm rounded-lg p-4 shadow-lg transform rotate-[-2deg]">
                                     <div class="h-full flex flex-col justify-center items-center space-y-4">
                                         <div class="text-center">
-                                            <h3 class="text-lg font-bold text-gray-800 mb-3 leading-tight">Software Engineer Intern</h3>
+                                            <h3 class="text-lg font-bold text-ink mb-3 leading-tight">Software Engineer
+                                                Intern</h3>
                                             <div class="flex items-center justify-center gap-3">
-                                                <a href="https://www.linkedin.com/company/azai-labs/posts/?feedView=all" target="_blank" class="text-amber-600 font-semibold text-base">
+                                                <a href="https://www.linkedin.com/company/azai-labs/posts/?feedView=all"
+                                                    target="_blank" class="text-primary font-semibold text-base">
                                                     AZAI labs.
                                                 </a>
-                                               
+
                                             </div>
-                                             <img src="resVid/icons8-3d-pointer.gif" alt="arrow" class="w-15 h-15 ml-20">
-                                            <p class="text-sm text-gray-600 mb-4">06/2025 - 09/2025</p>
-                                            <div class="border-t border-gray-200 pt-3">
+                                            <img src="resVid/icons8-3d-pointer.gif" alt="arrow" class="w-15 h-15 ml-20">
+                                            <p class="text-sm text-muted mb-4">06/2025 - 09/2025</p>
+                                            <div class="border-t border-line pt-3">
                                                 <p class="text-base font-semibold text-green-700">Paid Remote</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
-                        
+
                         <!-- Right side - Detailed Experience -->
                         <div class="space-y-8 scroll-reveal-right">
-                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 scroll-reveal stagger-1">
+                            <div
+                                class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/25 scroll-reveal stagger-1">
                                 <div class="flex items-center mb-6">
                                     <div class="w-16 h-16 flex items-center justify-center mr-4">
-                                        <img width="64" height="64" src="https://img.icons8.com/external-wanicon-two-tone-wanicon/64/external-mobile-app-logistics-wanicon-two-tone-wanicon.png" alt="external-mobile-app-logistics-wanicon-two-tone-wanicon"/>
+                                        <img width="64" height="64"
+                                            src="https://img.icons8.com/external-wanicon-two-tone-wanicon/64/external-mobile-app-logistics-wanicon-two-tone-wanicon.png"
+                                            alt="external-mobile-app-logistics-wanicon-two-tone-wanicon" />
                                     </div>
-                                    <h4 class="text-xl font-semibold text-gray-800">Mobile Development</h4>
+                                    <h4 class="text-xl font-semibold text-ink">Mobile Development</h4>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Developing cross-platform mobile applications using Flutter and Dart for both iOS and Android, 
+                                <p class="text-muted leading-relaxed">
+                                    Developing cross-platform mobile applications using Flutter and Dart for both iOS
+                                    and Android,
                                     with integrated APIs and Firebase services for real-time data synchronization.
                                 </p>
                                 <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm">Flutter</span>
-                                    <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm">Dart</span>
-                                    <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm">Firebase</span>
+                                    <span
+                                        class="bg-primary/15 text-primary px-3 py-1 rounded-full text-sm">Flutter</span>
+                                    <span class="bg-primary/15 text-primary px-3 py-1 rounded-full text-sm">Dart</span>
+                                    <span
+                                        class="bg-primary/15 text-primary px-3 py-1 rounded-full text-sm">Firebase</span>
                                 </div>
                             </div>
-                            
-                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 scroll-reveal stagger-2">
+
+                            <div
+                                class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/25 scroll-reveal stagger-2">
                                 <div class="flex items-center mb-6">
                                     <div class="w-16 h-16 flex items-center justify-center mr-4">
-                                        <img width="48" height="48" src="https://img.icons8.com/clouds/100/bug.png" alt="bug" class="w-full h-full object-contain">
+                                        <img width="48" height="48" src="https://img.icons8.com/clouds/100/bug.png"
+                                            alt="bug" class="w-full h-full object-contain">
                                     </div>
-                                    <h4 class="text-xl font-semibold text-gray-800">Automation Testing</h4>
+                                    <h4 class="text-xl font-semibold text-ink">Automation Testing</h4>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Developing automated end-to-end tests using Playwright and TypeScript, with CI/CD pipeline 
+                                <p class="text-muted leading-relaxed">
+                                    Developing automated end-to-end tests using Playwright and TypeScript, with CI/CD
+                                    pipeline
                                     integration and Allure reporting for comprehensive test analysis.
                                 </p>
                                 <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm">Playwright</span>
-                                    <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
-                                    <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm">CI/CD</span>
+                                    <span
+                                        class="bg-secondary/15 text-orange-800 px-3 py-1 rounded-full text-sm">Playwright</span>
+                                    <span
+                                        class="bg-secondary/15 text-orange-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
+                                    <span
+                                        class="bg-secondary/15 text-orange-800 px-3 py-1 rounded-full text-sm">CI/CD</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Second Experience -->
                     <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <!-- Left side - Personal Image with Whiteboard -->
+                        <!-- Left side - White Blank Div replacing the image -->
                         <div class="relative scroll-reveal-left">
-                            <div class="relative">
-                                <img src="resPic/personalex2.jpg" alt="Innovation Fellowship Experience" class="w-full h-auto rounded-2xl shadow-2xl">
-                                
-                                <!-- Whiteboard Content Overlay -->
-                                <div class="absolute top-[10%] left-[30%] right-[25%] bottom-[12%]   rounded-lg p-4 shadow-lg transform rotate-[2deg]">
-                                    <div class="h-full flex flex-col justify-center items-center">
-                                        <div class="text-center space-y-3">
-                                            <h3 class="text-xl font-bold text-gray-900 leading-tight">Innovation Fellow</h3>
-                                            <a href="https://www.linkedin.com/company/projukti-lipi/ target="_blank class="text-purple-600 font-semibold text-lg hover:text-purple-700 transition-colors duration-200 flex items-center justify-center gap-2">
-                                                PROJUKTI LIPI
-                                            </a>
-                                             <img src="resVid/icons8-3d-pointer.gif" alt="arrow" class="w-15 h-15 ml-20">
-                                            <p class="text-base text-gray-600">10/2025 - 12/2025</p>
-                                            <p class="text-base text-gray-600">Role : Backend Engineer </p>
-                                        </div>
-                                        
-                                    </div>
+                            <div
+                                class="bg-white rounded-2xl shadow-2xl p-8 h-full min-h-[350px] flex flex-col justify-center items-center border border-purple-100">
+                                <div class="text-center space-y-3">
+                                    <h3 class="text-xl font-bold text-ink leading-tight">Innovation Fellow</h3>
+                                    <a href="https://www.linkedin.com/company/projukti-lipi/" target="_blank"
+                                        class="text-purple-600 font-semibold text-lg hover:text-purple-700 transition-colors duration-200 flex items-center justify-center gap-2">
+                                        PROJUKTI LIPI
+                                    </a>
+                                    <img src="resVid/icons8-3d-pointer.gif" alt="arrow" class="w-15 h-15 mx-auto my-2">
+                                    <p class="text-base text-muted">10/2025 - 12/2025</p>
+                                    <p class="text-base text-muted">Role : Backend Engineer</p>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Right side - Detailed Experience -->
                         <div class="space-y-8 scroll-reveal-right">
-                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-200 scroll-reveal stagger-1">
+                            <div
+                                class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-200 scroll-reveal stagger-1">
                                 <div class="flex items-center mb-6">
                                     <div class="w-16 h-16 flex items-center justify-center mr-4">
-                                        <img width="48" height="48" src="https://img.icons8.com/clouds/100/innovation.png" alt="innovation" class="w-full h-full object-contain">
+                                        <img width="48" height="48"
+                                            src="https://img.icons8.com/clouds/100/innovation.png" alt="innovation"
+                                            class="w-full h-full object-contain">
                                     </div>
-                                    <h4 class="text-xl font-semibold text-gray-800">Cross-University Collaboration</h4>
+                                    <h4 class="text-xl font-semibold text-ink">Cross-University Collaboration</h4>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Partnered with cross-university teams from BRACU, AUST, IUB, AIUB and other institutions 
-                                    nationwide to design, test and present practical solutions for real-world challenges.
+                                <p class="text-muted leading-relaxed">
+                                    Partnered with cross-university teams from BRACU, AUST, IUB, AIUB and other
+                                    institutions
+                                    nationwide to design, test and present practical solutions for real-world
+                                    challenges.
                                 </p>
                                 <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Innovation</span>
-                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Collaboration</span>
-                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Problem Solving</span>
-                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Design Thinking</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Innovation</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Collaboration</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Problem
+                                        Solving</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Design
+                                        Thinking</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Experience Section -->
                     <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <!-- Left side - Personal Image with Whiteboard -->
+                        <!-- Left side - White Blank Div replacing the image -->
                         <div class="relative scroll-reveal-left">
-                            <div class="relative">
-                                <img src="resPic/personalex2.jpg" alt="Innovation Fellowship Experience" class="w-full h-auto rounded-2xl shadow-2xl">
-                                
-                                <!-- Whiteboard Content Overlay -->
-                                <div class="absolute top-[10%] left-[30%] right-[25%] bottom-[12%]   rounded-lg p-4 shadow-lg transform rotate-[2deg]">
-                                    <div class="h-full flex flex-col justify-center items-center">
-                                        <div class="text-center space-y-4">
-                                            <h3 class="text-xl font-bold text-gray-900 leading-tight">Associate Software Engineer </h3>
-                                            <h3 class="text-lg font-bold text-gray-900 leading-tight">Fayeem Innovations LLC</h3>
-                                            <a href="mailto:support@fayeeminnovationsllc.com" class="inline-flex items-center justify-center gap-2 text-sm text-gray-700 hover:text-purple-700 transition-colors duration-200">
-                                                <!-- <i class="fas fa-envelope"></i> -->
-                                                <span>support@fayeeminnovationsllc.com</span>
-                                            </a>
-                                   
-                                            <p class="text-base text-gray-600">07/2025 - Present</p>
-                                            <div class="border-t border-gray-200 pt-3">
-                                                <p class="text-base font-semibold text-green-700">Paid Remote</p>
-                                            </div>
-                                        </div>
-                                        
+                            <div
+                                class="bg-white rounded-2xl shadow-2xl p-8 h-full min-h-[350px] flex flex-col justify-center items-center border border-purple-100">
+                                <div class="text-center space-y-4">
+                                    <h3 class="text-xl font-bold text-ink leading-tight">Associate Software Engineer
+                                    </h3>
+                                    <h3 class="text-lg font-bold text-ink leading-tight">Fayeem Innovations LLC</h3>
+                                    <a href="mailto:support@fayeeminnovationsllc.com"
+                                        class="inline-flex items-center justify-center gap-2 text-sm text-muted hover:text-purple-700 transition-colors duration-200">
+                                        <span>support@fayeeminnovationsllc.com</span>
+                                    </a>
+
+                                    <p class="text-base text-muted">07/2025 - Present</p>
+                                    <div class="border-t border-line pt-3">
+                                        <p class="text-base font-semibold text-green-700">Paid Remote</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                                             <!-- Right side - Detailed Experience -->
+
+                        <!-- Right side - Detailed Experience -->
                         <div class="space-y-8 scroll-reveal-right">
-                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-200 scroll-reveal stagger-1">
+                            <div
+                                class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-200 scroll-reveal stagger-1">
                                 <div class="flex items-center mb-6">
                                     <div class="w-16 h-16 flex items-center justify-center mr-4">
-                                        <img width="48" height="48" src="https://img.icons8.com/clouds/100/innovation.png" alt="innovation" class="w-full h-full object-contain">
+                                        <img width="48" height="48"
+                                            src="https://img.icons8.com/clouds/100/innovation.png" alt="innovation"
+                                            class="w-full h-full object-contain">
                                     </div>
-                                    <h4 class="text-xl font-semibold text-gray-800">Contract Software Development Associate</h4>
+                                    <h4 class="text-xl font-semibold text-ink">Contract Software Development Associate
+                                    </h4>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed">
-                                    <strong class="text-gray-800">Automation:</strong> Developed and maintained end-to-end automation suites using TypeScript.<br><br>
-                                    <strong class="text-gray-800">Manual QA:</strong> Performed rigorous manual testing and edge-case analysis for enterprise-grade features.<br><br>
-                                    <strong class="text-gray-800">Project Management:</strong> Managed the full development lifecycle and bug tracking within a Jira-based Scrum framework.<br><br>
-        
+                                <p class="text-muted leading-relaxed">
+                                    <strong class="text-ink">Automation:</strong> Developed and maintained end-to-end
+                                    automation suites using TypeScript.<br><br>
+                                    <strong class="text-ink">Manual QA:</strong> Performed rigorous manual testing and
+                                    edge-case analysis for enterprise-grade features.<br><br>
+                                    <strong class="text-ink">Project Management:</strong> Managed the full development
+                                    lifecycle and bug tracking within a Jira-based Scrum framework.<br><br>
                                 </p>
                                 <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
-                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Playwright</span>
-                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">System Logic</span>
-                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Automation</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Playwright</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">System
+                                        Logic</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Automation</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </section>
-    
-    
-    <!-- Education Section -->
-    <section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative" id="education">
-        <!-- Background Image -->
-        <div class="absolute inset-0 opacity-10">
-            <img src="resPic/education.jpg" alt="Education Background" class="w-full h-full object-cover">
-        </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">EDUCATION</h2>
-            
-            <div class="grid lg:grid-cols-2 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 scroll-reveal stagger-1">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-16 h-16 flex items-center justify-center flex-shrink-0">
-                            <img width="48" height="48" src="https://img.icons8.com/clouds/100/graduation-cap.png" alt="graduation-cap" class="w-full h-full object-contain">
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Software Engineering</h3>
-                            <p class="text-cyan-600 font-medium mb-4">Shahjalal University of Science & Technology</p>
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <span class="text-gray-600">2022 – 2026 (Expected) | Sylhet</span>
-                                <span class=" text-amber-800 px-3 py-1 rounded-full text-sm font-bold">CGPA: 3.61/4.00</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 scroll-reveal stagger-2">
+            </div>
+        </div>
+        </div>
+        </div>
+
+    </section>
+
+
+    <!-- Education Section -->
+    <section class="py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-orange-50 relative" id="education">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-10">
+            <img src="resPic/forDesign/education.jpg" alt="Education Background" class="w-full h-full object-cover">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-ink mb-16 scroll-reveal gradient-text">
+                EDUCATION </h2>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div
+                    class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-line scroll-reveal stagger-1">
                     <div class="flex items-start space-x-4">
                         <div class="w-16 h-16 flex items-center justify-center flex-shrink-0">
-                            <img width="48" height="48" src="https://img.icons8.com/clouds/100/school.png" alt="school" class="w-full h-full object-contain">
+                            <img width="48" height="48" src="https://img.icons8.com/clouds/100/graduation-cap.png"
+                                alt="graduation-cap" class="w-full h-full object-contain">
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Higher Secondary Certificate</h3>
+                            <h3 class="text-2xl font-bold text-ink mb-2">Software Engineering</h3>
+                            <p class="text-cyan-600 font-medium mb-4">Shahjalal University of Science & Technology</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                                <span class="text-muted">2022 – 2026 (Expected) | Sylhet</span>
+                                <span class=" text-primary px-3 py-1 rounded-full text-sm font-bold">CGPA:
+                                    3.66/4.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-line scroll-reveal stagger-2">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-16 h-16 flex items-center justify-center flex-shrink-0">
+                            <img width="48" height="48" src="https://img.icons8.com/clouds/100/school.png" alt="school"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-ink mb-2">Higher Secondary Certificate</h3>
                             <p class="text-red-600 font-medium mb-4">Holy Cross College</p>
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <span class="text-gray-600">Dhaka</span>
-                                <span class=" text-amber-800 px-3 py-1 rounded-full text-sm font-bold">GPA: 5.00</span>
+                                <span class="text-muted">Dhaka</span>
+                                <span class=" text-primary px-3 py-1 rounded-full text-sm font-bold">GPA: 5.00</span>
                             </div>
                         </div>
                     </div>
@@ -478,108 +625,182 @@
 
 
     <!-- Skills Section -->
-    <section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative overflow-hidden" id="skills">
+    <section class="py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-orange-50 relative overflow-hidden"
+        id="skills">
         <!-- Background Image -->
         <div class="absolute inset-0 opacity-5">
-            <img src="resPic/brown2.jpg" alt="Background" class="w-full h-full object-cover">
+            <img src="resPic/forDesign/brown2.jpg" alt="Background" class="w-full h-full object-cover">
         </div>
-        
+
         <!-- Hanging Tech Light -->
         <div class="absolute top-0 left-8 z-20">
             <!-- Cable/String -->
-            <div class="w-0.5 h-32 bg-gray-600 mx-auto"></div>
+            <div class="w-0.5 h-32 bg-canvas mx-auto"></div>
             <!-- Tech Light Image -->
             <div class="relative">
-                <img src="resPic/tech.jpg" alt="Tech Light" class="w-32 h-32 rounded-full shadow-2xl border-4 border-yellow-300 object-cover animate-pulse">
+                <img src="resPic/forDesign/tech.jpg" alt="Tech Light"
+                    class="w-32 h-32 rounded-full shadow-2xl border-4 border-secondary/40 object-cover animate-pulse">
                 <!-- Light Glow Effect -->
-                <div class="absolute inset-0 rounded-full bg-yellow-200 opacity-30 blur-xl"></div>
+                <div class="absolute inset-0 rounded-full bg-secondary/25 opacity-30 blur-xl"></div>
             </div>
         </div>
-        
+
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">TECHNICAL SKILLS</h2>
-            
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-ink mb-16 scroll-reveal gradient-text">
+                TECHNICAL SKILLS
+            </h2>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-200 scroll-reveal stagger-1 scroll-reveal stagger-3 scroll-reveal stagger-4">
+                <div
+                    class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-primary/25 scroll-reveal stagger-1 scroll-reveal stagger-3 scroll-reveal stagger-4">
                     <div class="text-center mb-6">
                         <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                            <img width="60" height="60" src="https://img.icons8.com/clouds/100/ruby-programming-language.png" alt="ruby-programming-language" class="w-full h-full object-contain">
+                            <img width="60" height="60"
+                                src="https://img.icons8.com/clouds/100/ruby-programming-language.png"
+                                alt="ruby-programming-language" class="w-full h-full object-contain">
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Programming Languages</h3>
+                        <h3 class="text-xl font-bold text-ink">Programming Languages</h3>
                     </div>
                     <div class="flex flex-wrap gap-2 justify-center">
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">C</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">C++</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Java</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Python</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
+                        <span class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">C</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">C++</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Java</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
                     </div>
                 </div>
-                
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 scroll-reveal stagger-2">
+
+                <div
+                    class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line scroll-reveal stagger-2">
                     <div class="text-center mb-6">
                         <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                            <img width="60" height="60" src="https://img.icons8.com/bubbles/100/code.png" alt="code" class="w-full h-full object-contain">
+                            <img width="60" height="60" src="https://img.icons8.com/bubbles/100/code.png" alt="code"
+                                class="w-full h-full object-contain">
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Frontend Technologies</h3>
+                        <h3 class="text-xl font-bold text-ink">Frontend Technologies</h3>
                     </div>
                     <div class="flex flex-wrap gap-2 justify-center">
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">HTML5</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">CSS3</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Bootstrap</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Java Spring Boot</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">HTML5</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">CSS3</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Bootstrap</span>
+                        <span class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind
+                            CSS</span>
+                        <span class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Java
+                            Spring Boot</span>
                     </div>
                 </div>
-                
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-200 scroll-reveal stagger-3">
+
+                <div
+                    class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-primary/25 scroll-reveal stagger-3">
                     <div class="text-center mb-6">
                         <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                            <img width="60" height="60" src="https://img.icons8.com/clouds/100/database.png" alt="database" class="w-full h-full object-contain">
+                            <img width="60" height="60" src="https://img.icons8.com/clouds/100/database.png"
+                                alt="database" class="w-full h-full object-contain">
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Backend & Databases</h3>
+                        <h3 class="text-xl font-bold text-ink">Backend & Databases</h3>
                     </div>
                     <div class="flex flex-wrap gap-2 justify-center">
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Flask</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Firebase</span>
-                                                <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Postman</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Flask</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Firebase</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Postman</span>
                     </div>
                 </div>
-                
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-200 scroll-reveal stagger-4">
+
+                <div
+                    class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-primary/25 scroll-reveal stagger-4">
                     <div class="text-center mb-6">
                         <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                            <img width="60" height="60" src="https://img.icons8.com/clouds/100/api.png" alt="api" class="w-full h-full object-contain">
+                            <img width="60" height="60" src="https://img.icons8.com/clouds/100/api.png" alt="api"
+                                class="w-full h-full object-contain">
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Tools & Platforms</h3>
+                        <h3 class="text-xl font-bold text-ink">Tools & Platforms</h3>
                     </div>
                     <div class="flex flex-wrap gap-2 justify-center">
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Git</span>
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">GitHub</span>
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">VS Code</span>
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Cursor</span>
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Playwright</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Git</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">GitHub</span>
+                        <span class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">VS
+                            Code</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Cursor</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Playwright</span>
                     </div>
                 </div>
-                   <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 scroll-reveal stagger-2">
+                <div
+                    class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line scroll-reveal stagger-2">
                     <div class="text-center mb-6">
                         <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                            <img width="60" height="60" src="https://img.icons8.com/bubbles/100/code.png" alt="code" class="w-full h-full object-contain">
+                            <img width="60" height="60" src="https://img.icons8.com/bubbles/100/code.png" alt="code"
+                                class="w-full h-full object-contain">
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Tools</h3>
+                        <h3 class="text-xl font-bold text-ink">Tools</h3>
                     </div>
                     <div class="flex flex-wrap gap-2 justify-center">
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">VS Code </span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Intellij</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Docker</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">n8n</span>
-                        <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">jira</span>
+                        <span class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">VS Code
+                        </span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Intellij</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Docker</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">n8n</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">jira</span>
+
+                    </div>
+                </div>
+                <div
+                    class="bg-surface rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line scroll-reveal stagger-2">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <img width="100" height="100" src="https://img.icons8.com/clouds/100/learning.png"
+                                alt="learning" />
+                        </div>
+                        <h3 class="text-xl font-bold text-ink">Soft SKills</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Communication
+                        </span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Teamwork</span>
+                        <span class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Time
+                            Management</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Problem-Solving</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Adaptability</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Attention
+                            to
+                            Detail</span>
+                        <span
+                            class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Proactive
+                            Attitude</span>
 
                     </div>
                 </div>
@@ -588,51 +809,71 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="py-20 bg-white relative" id="projects">
+    <section class="py-20 bg-surface relative" id="projects">
         <!-- Background Image -->
         <div class="absolute inset-0 opacity-5">
-            <img src="resPic/brown1.jpg" alt="Background" class="w-full h-full object-cover">
+            <img src="resPic/forDesign/brown1.jpg" alt="Background" class="w-full h-full object-cover">
         </div>
-        
+
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">FEATURED PROJECTS</h2>
-            
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-ink mb-16 scroll-reveal">FEATURED PROJECTS</h2>
+
             <div class="grid lg:grid-cols-2 gap-8">
                 <!-- DevSnippet Marketplace Project -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-1">
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-1">
                     <div class="relative">
                         <!-- Placeholder for DevSnippet video/image -->
-                        <div class="w-full h-64 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center relative">
+                        <div
+                            class="w-full h-64 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center relative">
                             <div class="text-center text-white">
                                 <i class="fas fa-code text-6xl mb-4 opacity-80"></i>
                                 <h4 class="text-2xl font-bold">DevSnippet</h4>
                                 <p class="text-sm opacity-90">Premium Code Marketplace</p>
                             </div>
                         </div>
-                        <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">Latest</div>
-                        <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">Interview Project</div>
+                        <div
+                            class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Latest</div>
+                        <div
+                            class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Interview Project</div>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">DevSnippet Marketplace</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                           Developed as a technical interview task, this project prioritizes backend architecture and security. I engineered a RESTful API using Node.js/Express, featuring JWT authentication and Bcrypt for robust user protection. I integrated the Stripe API for secure payments and optimized MongoDB schemas for data persistence. The entire system was built and fully deployed on Render within a strict deadline
+                        <h3 class="text-2xl font-bold text-ink mb-4">DevSnippet Marketplace</h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            Developed as a technical interview task, this project prioritizes backend architecture and
+                            security. I engineered a RESTful API using Node.js/Express, featuring JWT authentication and
+                            Bcrypt for robust user protection. I integrated the Stripe API for secure payments and
+                            optimized MongoDB schemas for data persistence. The entire system was built and fully
+                            deployed on Render within a strict deadline
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">React.js</span>
-                            <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
-                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Stripe API</span>
-                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">JWT Auth</span>
-                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Vite</span>
+                            <span
+                                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">React.js</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind
+                                CSS</span>
+                            <span
+                                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                            <span
+                                class="bg-secondary/15 text-secondary px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
+                            <span
+                                class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Stripe
+                                API</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">JWT
+                                Auth</span>
+                            <span
+                                class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Vite</span>
                         </div>
                         <!-- Deployment and GitHub links -->
                         <div class="flex gap-4">
-                            <a href="https://backend-api-g1ye.onrender.com/" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                            <a href="https://backend-api-g1ye.onrender.com/" target="_blank"
+                                class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
                                 <i class="fas fa-external-link-alt"></i>
                                 Live Demo
                             </a>
-                            <a href="https://github.com/SumaiyaRahman16/backend-api" target="_blank" class="border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                            <a href="https://github.com/SumaiyaRahman16/backend-api" target="_blank"
+                                class="border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
                                 <i class="fab fa-github"></i>
                                 View Code
                             </a>
@@ -641,98 +882,125 @@
                 </div>
 
                 <!-- EchoGuard Project -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-2">
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-2">
                     <div class="relative">
                         <video id="echoVid" controls muted preload="metadata" class="w-full h-64 object-cover">
                             <source src="resVid/echoGuard.mov" type="video/mp4">
                         </video>
-                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Featured</div>
+                        <div
+                            class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Featured</div>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">EchoGuard</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Real-time safety alert system built with MERN stack during an international hackathon. 
+                        <h3 class="text-2xl font-bold text-ink mb-4">EchoGuard</h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            Real-time safety alert system built with MERN stack during an international hackathon.
                             Sole participant project that earned a Devpost badge.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">MERN Stack</span>
-                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Google API</span>
-                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Real-time</span>
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Hackathon</span>
-                            <span class="bg-yellow-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Solo Project</span>
-                            <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Devpost Badge</span>
+                            <span class="bg-secondary/15 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">MERN
+                                Stack</span>
+                            <span
+                                class="bg-secondary/15 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Google
+                                API</span>
+                            <span
+                                class="bg-secondary/15 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Real-time</span>
+                            <span
+                                class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Hackathon</span>
+                            <span class="bg-secondary/15 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Solo
+                                Project</span>
+                            <span
+                                class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">Devpost
+                                Badge</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- ScholarBot Project -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-3">
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-3">
                     <div class="relative">
                         <video id="scholarVid" controls muted preload="metadata" class="w-full h-64 object-cover">
                             <source src="resVid/scholarBot.mov" type="video/mp4">
                         </video>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">ScholarBot</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            AI-powered scholarship-finding bot that helps users discover scholarships based on their profile. 
+                        <h3 class="text-2xl font-bold text-ink mb-4">ScholarBot</h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            AI-powered scholarship-finding bot that helps users discover scholarships based on their
+                            profile.
                             Team collaboration project.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
-                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Flask </span>
-                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">REST API</span>
-                            <span class="bg-yellow-100 text-black-800 px-3 py-1 rounded-full text-sm font-medium">FastAPI</span>
-                            <span class="bg-yellow-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Generative AI</span>
-                            <span class="bg-yellow-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Team Project</span>
+                            <span
+                                class="bg-secondary/15 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
+                            <span class="bg-secondary/15 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Flask
+                            </span>
+                            <span class="bg-secondary/15 text-green-800 px-3 py-1 rounded-full text-sm font-medium">REST
+                                API</span>
+                            <span
+                                class="bg-secondary/15 text-black-800 px-3 py-1 rounded-full text-sm font-medium">FastAPI</span>
+                            <span
+                                class="bg-secondary/15 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Generative
+                                AI</span>
+                            <span
+                                class="bg-secondary/15 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Team
+                                Project</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Snake Game Project -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-4">
                     <div class="relative">
                         <video id="snakeVid" controls muted preload="metadata" class="w-full h-64 object-cover">
                             <source src="resVid/snakeGame.mov" type="video/mp4">
                         </video>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Snake Game</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Classic Snake game with custom mechanics and enhanced gameplay. 
+                        <h3 class="text-2xl font-bold text-ink mb-4">Snake Game</h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            Classic Snake game with custom mechanics and enhanced gameplay.
                             Developed solo using C++ and SDL library.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">C++</span>
-                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">SDL</span>
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Game Development</span>
+                            <span class="bg-canvas text-ink px-3 py-1 rounded-full text-sm font-medium">SDL</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Game
+                                Development</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Treasure Hunt Project -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-4">
                     <div class="relative">
                         <video id="treasureVid" controls muted preload="metadata" class="w-full h-64 object-cover">
                             <source src="resVid/treasureHunt.mov" type="video/mp4">
                         </video>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Treasure Hunt Game</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Solo Leveling inspired treasure hunt game with puzzles and immersive storytelling. 
+                        <h3 class="text-2xl font-bold text-ink mb-4">Treasure Hunt Game</h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            Solo Leveling inspired treasure hunt game with puzzles and immersive storytelling.
                             Java and OOP concepts.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Java</span>
-                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">OOP</span>
-                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Game Design</span>
+                            <span
+                                class="bg-secondary/15 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Java</span>
+                            <span
+                                class="bg-secondary/15 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">OOP</span>
+                            <span class="bg-secondary/15 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Game
+                                Design</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Daktar AI Project -->
-                <!-- <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
+                <!-- <div class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-4">
                     <div class="relative">
                         <video id="daktarVid" controls muted preload="metadata" class="w-full h-48 sm:h-56 md:h-64 object-cover rounded-t-2xl">
                             <source src="resVid/daktarAi.mov" type="video/mp4">
@@ -740,22 +1008,23 @@
                         </video>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Daktar AI [Internship Project]</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
+                        <h3 class="text-2xl font-bold text-ink mb-4">Daktar AI [Internship Project]</h3>
+                        <p class="text-muted mb-6 leading-relaxed">
                             AI-powered healthcare assistant providing symptom analysis, health tips, and appointment scheduling. 
                             Built with Flutter and Dart. Built the eyecatching interface.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
-                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">UI</span>
+                            <span class="bg-secondary/15 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
+                            <span class="bg-secondary/15 text-green-800 px-3 py-1 rounded-full text-sm font-medium">UI</span>
                             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Health Care</span>
-                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
+                            <span class="bg-secondary/15 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
                         </div>
                     </div>
                 </div> -->
 
                 <!-- MeatMatrix Project -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal stagger-4">
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-4">
                     <div class="relative">
                         <video id="meatMatrixVid" controls muted preload="metadata" class="w-full h-64 object-cover">
                             <source src="resVid/meatMatrix.mov" type="video/mp4">
@@ -763,240 +1032,188 @@
                         </video>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">MeatMatrix</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Comprehensive meat inventory management system with real-time updates, automated alerts, 
+                        <h3 class="text-2xl font-bold text-ink mb-4">MeatMatrix</h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            Comprehensive meat inventory management system with real-time updates, automated alerts,
                             and detailed reporting capabilities for efficient meat storage management.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-yellow-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Inventory Management</span>
-                            <span class="bg-yellow-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">HTML, CSS, JS</span>
-                            <span class="bg-yellow-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
-                            <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
+                            <span
+                                class="bg-secondary/15 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Inventory
+                                Management</span>
+                            <span
+                                class="bg-secondary/15 text-green-800 px-3 py-1 rounded-full text-sm font-medium">HTML,
+                                CSS, JS</span>
+                            <span
+                                class="bg-secondary/15 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                            <span
+                                class="bg-secondary/15 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Reporting</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
- 
-    
-    <!-- Daktar AI - Standalone Project Section -->
-<section class="py-12 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 relative">
-    <div class="container mx-auto px-6 relative z-10">
-        <h2 class="text-3xl lg:text-4xl font-bold text-center text-gray-800 mb-12 scroll-reveal">INTERNSHIP PROJECT</h2>
-        
-        <!-- Single Project Container -->
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden scroll-reveal">
-                <div class="relative">
-                    <!-- Portrait Video Container - Matching your video's aspect ratio -->
-                    <div class="flex justify-center bg-gray-100 py-8">
-                        <div class="w-80 h-[540px] overflow-hidden rounded-xl shadow-lg">
-                            <video id="daktarVid" controls muted preload="metadata" class="w-full h-full object-contain">
-                                <source src="resVid/daktarAi.mov" type="video/mp4">
-                                <source src="resVid/daktarAi.mp4" type="video/mp4">
+                <!-- hackathon project  -->
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-1">
+                    <div class="relative">
+                        <div class="relative">
+                            <video id="EduAiVid" controls muted preload="metadata" class="w-full h-64 object-cover">
+                                <source src="resVid/EduAi.MOV" type="video/mp4">
                             </video>
                         </div>
+                        <div
+                            class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Hackathon</div>
+                        <div
+                            class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            EduAI</div>
                     </div>
-                    <!-- Project Badge -->
-                    <div class="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
-                        <i class="fas fa-briefcase mr-2"></i>
-                        Internship Project
-                    </div>
-                </div>
-                
-                <!-- Project Content -->
-                <div class="p-8 lg:p-12">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-stethoscope text-white text-2xl"></i>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-ink mb-4">EduAI – AI-Powered Classroom Management Platform
+                        </h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            Built for an AI hackathon, EduAI centralizes classroom management through intelligent AI
+                            orchestration. I developed a scalable full-stack platform using Next.js and FastAPI,
+                            integrating LangGraph-powered AI agents, RAG with PGVector, and JWT authentication to
+                            deliver personalized learning, AI tutoring, automated study plans, quiz generation, and
+                            semantic document search. The platform also features community classrooms, smart scheduling,
+                            and a unified academic workspace, making education more accessible and efficient for both
+                            students and educators.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Next.js</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind
+                                CSS</span>
+                            <span
+                                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">FastAPI</span>
+                            <span
+                                class="bg-secondary/15 text-secondary px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
+                            <span
+                                class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">LangGraph</span>
+                            <span
+                                class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">PGvector</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">JWT
+                                Auth</span>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Framer
+                                Motion</span>
                         </div>
-                        <div>
-                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-800">Daktar AI</h3>
-                            <p class="text-purple-600 font-semibold">Healthcare Assistant Platform</p>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                        AI-powered healthcare assistant providing symptom analysis, health tips, and appointment scheduling. 
-                        Built with Flutter and Dart during my internship at AZAI Labs. I focused on creating an eye-catching 
-                        and intuitive user interface that enhances the user experience for healthcare consultations.
-                    </p>
-                    
-                    <!-- Tech Stack -->
-                    <div class="mb-8">
-                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Technologies Used:</h4>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">Flutter</span>
-                            <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">Dart</span>
-                            <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">UI/UX Design</span>
-                            <span class="bg-pink-100 text-pink-800 px-4 py-2 rounded-full text-sm font-medium">Healthcare</span>
-                            <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium">Mobile Development</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Highlights -->
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-purple-50 rounded-xl p-6">
-                            <h5 class="font-semibold text-gray-800 mb-3 flex items-center">
-                                <i class="fas fa-mobile-alt text-purple-600 mr-2"></i>
-                                Cross-Platform
-                            </h5>
-                            <p class="text-gray-600 text-sm">Built for both iOS and Android with Flutter framework</p>
-                        </div>
-                        
-                        <div class="bg-indigo-50 rounded-xl p-6">
-                            <h5 class="font-semibold text-gray-800 mb-3 flex items-center">
-                                <i class="fas fa-palette text-indigo-600 mr-2"></i>
-                                UI Focus
-                            </h5>
-                            <p class="text-gray-600 text-sm">Designed intuitive and accessible healthcare interface</p>
+                        <!-- Deployment and GitHub links -->
+                        <div class="flex gap-4">
+                            <a href="https://backend-api-g1ye.onrender.com/" target="_blank"
+                                class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/maruf6890/EduAI.git" target="_blank"
+                                class="border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-    <!-- Certificates Section -->
-    
-  <!-- /// achivements section and hackathon section -->
-    <section class="py-24 bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 relative" id="awards">
-        <div class="container mx-auto px-8 relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-20 scroll-reveal">ACHIEVEMENTS, HACKATHONS & COMPETITIONS</h2>
-                         <!-- <div class="w-24 h-24 flex items-center justify-center mx-auto mb-6">
-                                <img width="72" height="72" src="https://img.icons8.com/clouds/100/trophy--v1.png" alt="trophy" class="w-full h-full object-contain">
-                            </div> -->
-            
-            <div class="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-                                <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-12 lg:col-span-2">
-                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <img src="resPic/award.jpg" alt="Award Background" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-6">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Selected for Server Camp | CodeCamp by Astha IT (May 2026 – Present)</h3>
-                            <p class="text-gray-600 mb-4"> Earned admission into an intensive backend engineering program by passing a competitive entrance process consisting of a technical MCQ and a programming contest.</p>
+                <!-- smartship -->
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-1">
+                    <div class="relative">
+                        <div class="relative">
+                            <video id="EduAiVid" controls muted preload="metadata" class="w-full h-64 object-cover">
+                                <source src="resVid/SmartShip.MOV" type="video/mp4">
+                            </video>
                         </div>
+                        <div
+                            class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Academic Project</div>
+                        <div
+                            class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            EduAI</div>
                     </div>
-                </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-ink mb-4">EduAI – AI-Powered Classroom Management Platform
+                        </h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            Developed as a full-stack logistics management platform, SmartShip streamlines shipment
+                            tracking and warehouse operations through a secure role-based architecture. I built a
+                            RESTful API using FastAPI and PostgreSQL with JWT authentication, implementing shipment
+                            management, rider assignments, delivery tracking, warehouse workflows, and real-time public
+                            parcel tracking. The platform provides an end-to-end courier management solution for
+                            administrators, warehouse operators, delivery riders, and customers.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Next.js</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind
+                                CSS</span>
+                            <span
+                                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">FastAPI</span>
+                            <span
+                                class="bg-secondary/15 text-secondary px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">JWT
+                                Auth</span>
 
-                
-                <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden group scroll-reveal stagger-1">
-                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
-                        <img src="resPic/award.jpg" alt="Award Background" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-10">
-              
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Highest Fund Award at  University Innovation Hub Program (UIHP)</h3>
-                            <p class="text-gray-600 mb-8 text-lg">Completed a 4-month intensive startup residency covering end-to-end business development; secured major funding based on technical feasibility.</p>
                         </div>
-                        <div class="grid grid-cols-3 gap-4">
-                            <img src="resPic/uihp.JPG" alt="UIHP Award 1" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                            <img src="resPic/uihp2.jpg" alt="UIHP Award 2" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                            <img src="resPic/uihp3.JPG" alt="UIHP Award 3" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                        <!-- Deployment and GitHub links -->
+                        <div class="flex gap-4">
+                            <a href="https://github.com/maruf6890/EduAI.git" target="_blank"
+                                class="border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                 <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-2">
-                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <img src="resPic/award.jpg" alt="Award Background" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-10">
-
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">FutureMakers Hackathon powered by Grameenphone</h3>
-                            <p class="text-gray-600 mb-8 text-lg">semi-finalists .</p>
+                <!-- //digital declutter -->
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal stagger-1">
+                    <div class="relative">
+                        <div class="relative">
+                            <video id="EduAiVid" controls muted preload="metadata" class="w-full h-64 object-cover">
+                                <source src="resVid/DigitalDeclutter.MOV" type="video/mp4">
+                            </video>
                         </div>
-                        <div class="flex justify-center">
-                            <div class="w-full h-80 bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                                <img src="resPic/futuremaker .png" alt="Career Club Award" class="w-full h-full object-contain">
-                            </div>
+                        <div
+                            class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Academic Project</div>
+                        <div
+                            class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Digital Declutter</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-ink mb-4">Digital Declutter – AI-Powered File Analytics
+                            Platform
+                        </h3>
+                        <p class="text-muted mb-6 leading-relaxed">
+                            Built as a full-stack productivity platform, Digital Declutter helps users analyze and
+                            organize cluttered folders through intelligent file analytics. I developed a scalable
+                            application using Next.js, Go, and PostgreSQL, implementing JWT authentication,
+                            high-performance file processing, file categorization, cleanup history tracking, and
+                            interactive storage visualizations. The platform identifies large, outdated files and
+                            provides actionable insights to help users reclaim disk space efficiently.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Next.js</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind
+                                CSS</span>
+                            <span
+                                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Go</span>
+                            <span
+                                class="bg-secondary/15 text-secondary px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">JWT
+                                Auth</span>
                         </div>
-                    </div>
-                </div>
-                      <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden group scroll-reveal stagger-1">
-                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
-                        <img src="resPic/award.jpg" alt="Award Background" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-10">
-    
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">NEUB Hackathon </h3>
-                            <p class="text-gray-600 mb-8 text-lg">The synergy was good, and we learned from our mistakes, and I guess that's what matters the most for a first hackathon. I got to know I have so many things to learn yet.
-                             </p>
-                        </div>
-                        <div class="grid grid-cols-3 gap-4">
-                            <img src="resPic/neub.jpeg" alt="UIHP Award 1" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                            <img src="resPic/neub2.jpeg" alt="UIHP Award 2" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                            <img src="resPic/neub3.jpeg" alt="UIHP Award 3" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- IDEATHON placed beside NEUB -->
-                <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden group scroll-reveal">
-                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
-                        <img src="resPic/award.jpg" alt="Award Background" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-10">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Champion at IDEATHON 4.0: Inter-University Idea Competition 2026</h3>
-                            <p class="text-gray-600 mb-8 text-lg">Won 1st place in a national-level competition organized by CDC, UAP, competing against universities nationwide.</p>
-                        </div>
-                           <div class="grid grid-cols-3 gap-4">
-                            <img src="resPic/uap2.jpg" alt="UIHP Award 1" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                            <img src="resPic/uap1.JPG" alt="UIHP Award 2" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                            <img src="resPic/uap3.jpg" alt="UIHP Award 3" class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-11">
-                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <img src="resPic/award.jpg" alt="Award Background" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-6">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Participated in an International Hackathon (Devpost)</h3>
-                            <p class="text-gray-600 mb-4">Collaborated with a global team of students to build ScholarBot, an AI-driven scholarship-finding tool.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-12">
-                                        <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <img src="resPic/award.jpg" alt="Award Background" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-6">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Participated in an International Hackathon (Devpost)</h3>
-                            <p class="text-gray-600 mb-4">Built EchoGuard, a MERN-stack real-time safety alert system as a solo participant; awarded a digital badge for technical implementation.</p>
-                        </div>
-                    </div>
-                </div>
-  
-
-                <div class="relative bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-2 lg:col-span-2">
-                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <img src="resPic/award.jpg" alt="Award Background" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-10">
-               
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">3rd Place at Talent Hunt Competition (SUST Career Club)</h3>
-                            <p class="text-gray-600 mb-8 text-lg">Selected as a top performer after a rigorous multi-stage evaluation including a technical exam, professional viva, and final presentation.</p>
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="w-full h-80 bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                                <img src="resPic/careerclub.jpg" alt="Career Club Award" class="w-full h-full object-contain">
-                            </div>
+                        <!-- Deployment and GitHub links -->
+                        <div class="flex gap-4">
+                            <a href="https://backend-api-g1ye.onrender.com/" target="_blank"
+                                class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/maruf6890/EduAI.git" target="_blank"
+                                class="border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1005,55 +1222,392 @@
         </div>
     </section>
 
-    <section class="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative" id="certificates">
+
+    <!-- Daktar AI - Standalone Project Section -->
+    <section class="py-12 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 relative">
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-16 scroll-reveal">CERTIFICATES</h2>
-            
+            <h2 class="text-3xl lg:text-4xl font-bold text-center text-ink mb-12 scroll-reveal">INTERNSHIP PROJECT</h2>
+
+            <!-- Single Project Container -->
+            <div class="max-w-4xl mx-auto">
+                <div
+                    class="bg-surface rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-line overflow-hidden scroll-reveal">
+                    <div class="relative">
+                        <!-- Portrait Video Container - Matching your video's aspect ratio -->
+                        <div class="flex justify-center bg-canvas py-8">
+                            <div class="w-80 h-[540px] overflow-hidden rounded-xl shadow-lg">
+                                <video id="daktarVid" controls muted preload="metadata"
+                                    class="w-full h-full object-contain">
+                                    <source src="resVid/daktarAi.mov" type="video/mp4">
+                                    <source src="resVid/daktarAi.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <!-- Project Badge -->
+                        <div
+                            class="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                            <i class="fas fa-briefcase mr-2"></i>
+                            Internship Project
+                        </div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="p-8 lg:p-12">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-stethoscope text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl lg:text-3xl font-bold text-ink">Daktar AI</h3>
+                                <p class="text-purple-600 font-semibold">Healthcare Assistant Platform</p>
+                            </div>
+                        </div>
+
+                        <p class="text-muted mb-8 leading-relaxed text-lg">
+                            AI-powered healthcare assistant providing symptom analysis, health tips, and appointment
+                            scheduling.
+                            Built with Flutter and Dart during my internship at AZAI Labs. I focused on creating an
+                            eye-catching
+                            and intuitive user interface that enhances the user experience for healthcare consultations.
+                        </p>
+
+                        <!-- Tech Stack -->
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold text-ink mb-4">Technologies Used:</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">Flutter</span>
+                                <span
+                                    class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">Dart</span>
+                                <span
+                                    class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">UI/UX
+                                    Design</span>
+                                <span
+                                    class="bg-pink-100 text-pink-800 px-4 py-2 rounded-full text-sm font-medium">Healthcare</span>
+                                <span
+                                    class="bg-secondary/15 text-secondary px-4 py-2 rounded-full text-sm font-medium">Mobile
+                                    Development</span>
+                            </div>
+                        </div>
+
+                        <!-- Project Highlights -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-purple-50 rounded-xl p-6">
+                                <h5 class="font-semibold text-ink mb-3 flex items-center">
+                                    <i class="fas fa-mobile-alt text-purple-600 mr-2"></i>
+                                    Cross-Platform
+                                </h5>
+                                <p class="text-muted text-sm">Built for both iOS and Android with Flutter framework</p>
+                            </div>
+
+                            <div class="bg-indigo-50 rounded-xl p-6">
+                                <h5 class="font-semibold text-ink mb-3 flex items-center">
+                                    <i class="fas fa-palette text-indigo-600 mr-2"></i>
+                                    UI Focus
+                                </h5>
+                                <p class="text-muted text-sm">Designed intuitive and accessible healthcare interface</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+
+    <!-- /// achivements section and hackathon section -->
+    <section class="py-24 bg-gradient-to-br from-secondary/10 via-primary/10 to-orange-50 relative" id="awards">
+        <div class="container mx-auto px-8 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-ink mb-20 scroll-reveal">ACHIEVEMENTS, HACKATHONS
+                & COMPETITIONS</h2>
+            <!-- <div class="w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                                <img width="72" height="72" src="https://img.icons8.com/clouds/100/trophy--v1.png" alt="trophy" class="w-full h-full object-contain">
+                            </div> -->
+
+            <div class="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-line overflow-hidden group scroll-reveal stagger-1">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+
+                            <h3 class="text-2xl font-bold text-ink mb-3">Highest Fund Award at University Innovation Hub
+                                Program (UIHP)</h3>
+                            <p class="text-muted mb-8 text-lg">Completed a 4-month intensive startup residency covering
+                                end-to-end business development; secured major funding based on technical feasibility.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <img src="resPic/uihp/uihp.JPG" alt="UIHP Award 1"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/uihp/uihp2.jpg" alt="UIHP Award 2"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/uihp/uihp3.JPG" alt="UIHP Award 3"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-primary/25 overflow-hidden group scroll-reveal stagger-2">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+
+                            <h3 class="text-2xl font-bold text-ink mb-3">FutureMakers Hackathon powered by Grameenphone
+                            </h3>
+                            <p class="text-muted mb-8 text-lg">semi-finalists .</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <div
+                                class="w-full h-80 bg-canvas rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                                <img src="resPic/futuremaker .png" alt="Career Club Award"
+                                    class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-line overflow-hidden group scroll-reveal stagger-1">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+
+                            <h3 class="text-2xl font-bold text-ink mb-3">NEUB Hackathon </h3>
+                            <p class="text-muted mb-8 text-lg">The synergy was good, and we learned from our mistakes,
+                                and I guess that's what matters the most for a first hackathon. I got to know I have so
+                                many things to learn yet.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <img src="resPic/neub/neub.jpeg" alt="UIHP Award 1"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/neub/neub2.jpeg" alt="UIHP Award 2"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/neub/neub3.jpeg" alt="UIHP Award 3"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IDEATHON placed beside NEUB -->
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-line overflow-hidden group scroll-reveal">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+                            <h3 class="text-2xl font-bold text-ink mb-3">Champion at IDEATHON 4.0: Inter-University Idea
+                                Competition 2026</h3>
+                            <p class="text-muted mb-8 text-lg">Won 1st place in a national-level competition organized
+                                by CDC, UAP, competing against universities nationwide.</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <img src="resPic/uap/uap2.jpg" alt="UIHP Award 1"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/uap/uap1.JPG" alt="UIHP Award 2"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/uap/uap3.jpg" alt="UIHP Award 3"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                        </div>
+                    </div>
+                </div>
+                <!-- //cuet hackathon finalist -->
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-line overflow-hidden group scroll-reveal">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+                            <h3 class="text-2xl font-bold text-ink mb-3">CUET SciBlitz 2.0 AI Hackathon Finalist</h3>
+                            <p class="text-muted mb-8 text-lg">Reached the finals of CUET SciBlitz 2.0, where our team
+                                presented an AI-powered education platform before industry judges and fellow
+                                competitors. The experience strengthened my technical, teamwork, and presentation skills
+                                while reinforcing the importance of continuous learning.</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <img src="resPic/cuet/cuet1.jpg" alt="UIHP Award 1"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/cuet/cuet2.jpg" alt="UIHP Award 2"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/cuet/cuet3.jpg" alt="UIHP Award 3"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                        </div>
+                    </div>
+                </div>
+                <!-- //duet hackathon -->
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-primary/25 overflow-hidden group scroll-reveal stagger-2">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+
+                            <h3 class="text-2xl font-bold text-ink mb-3">DUET CSE Carnival 2026 – AI Hackathon
+                                Participant
+                            </h3>
+                            <p class="text-muted mb-8 text-lg">Participated in a Kaggle-based AI Datathon, collaborating
+                                to develop and evaluate machine learning models for a real-world prediction task. The
+                                competition strengthened my understanding of data preprocessing, model evaluation, and
+                                collaborative problem solving..</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <div
+                                class="w-full h-80 bg-canvas rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                                <img src="resPic/duet.png" alt="Career Club Award" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ///astha it  -->
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-line overflow-hidden group scroll-reveal">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+                            <h3 class="text-2xl font-bold text-ink mb-3">Selected for Server Camp | CodeCamp by Astha IT
+                                (May 2026 – Present)</h3>
+                            <p class="text-muted mb-8 text-lg">Earned admission into an intensive backend engineering
+                                program
+                                by passing a competitive entrance process consisting of a technical MCQ and a
+                                programming contest.</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <img src="resPic/astha/astha1.jpg" alt="UIHP Award 1"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/astha/astha2.jpg" alt="UIHP Award 2"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="resPic/astha/astha3.jpg" alt="UIHP Award 3"
+                                class="w-full h-40 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-line overflow-hidden group scroll-reveal">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-5 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+
+                            <h3 class="text-2xl font-bold text-ink mb-3">3rd Place at Talent Hunt Competition (SUST
+                                Career Club)</h3>
+                            <p class="text-muted mb-8 text-lg">Selected as a top performer after a rigorous multi-stage
+                                evaluation including a technical exam, professional viva, and final presentation.</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <div
+                                class="w-full h-80 bg-canvas rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                                <img src="resPic/careerclub.jpg" alt="Career Club Award"
+                                    class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-primary/25 overflow-hidden group scroll-reveal stagger-11">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-ink mb-3">Participated in an International Hackathon
+                                (Devpost)</h3>
+                            <p class="text-muted mb-4">Collaborated with a global team of students to build ScholarBot,
+                                an AI-driven scholarship-finding tool.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="relative bg-surface rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-300 border border-primary/25 overflow-hidden group scroll-reveal stagger-12">
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <img src="resPic/forDesign/award.jpg" alt="Award Background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-ink mb-3">Participated in an International Hackathon
+                                (Devpost)</h3>
+                            <p class="text-muted mb-4">Built EchoGuard, a MERN-stack real-time safety alert system as a
+                                solo participant; awarded a digital badge for technical implementation.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-orange-50 relative" id="certificates">
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-ink mb-16 scroll-reveal">CERTIFICATES</h2>
+
             <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Certificate 1 -->
-                <!-- <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-1">
+                <!-- <div class="relative bg-surface rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/25 overflow-hidden group scroll-reveal stagger-1">
                     <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
-                        <img src="resPic/brown2.jpg" alt="Certificate Background" class="w-full h-full object-cover">
+                        <img src="resPic/forDesign/brown2.jpg" alt="Certificate Background" class="w-full h-full object-cover">
                     </div>
                     <div class="relative z-10">
                         <div class="text-center mb-4">
                             <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
                                 <img width="48" height="48" src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" class="w-full h-full object-contain">
                             </div>
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">100% Attendance Certificate</h3>
-                            <p class="text-amber-700 font-medium">Holy Cross College</p>
+                            <h3 class="text-lg font-bold text-ink mb-2">100% Attendance Certificate</h3>
+                            <p class="text-primary font-medium">Holy Cross College</p>
                         </div>
                     </div>
                 </div> -->
-                
+
                 <!-- Certificate 2 -->
-                <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-2">
+                <div
+                    class="relative bg-surface rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/25 overflow-hidden group scroll-reveal stagger-2">
                     <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
-                        <img src="resPic/brown2.jpg" alt="Certificate Background" class="w-full h-full object-cover">
+                        <img src="resPic/forDesign/brown2.jpg" alt="Certificate Background"
+                            class="w-full h-full object-cover">
                     </div>
                     <div class="relative z-10">
                         <div class="text-center mb-4">
                             <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                <img width="48" height="48" src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" class="w-full h-full object-contain">
+                                <img width="48" height="48" src="https://img.icons8.com/bubbles/100/certificate.png"
+                                    alt="certificate" class="w-full h-full object-contain">
                             </div>
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">Career Essentials in Generative AI</h3>
-                            <p class="text-amber-700 font-medium">Microsoft & LinkedIn</p>
+                            <h3 class="text-lg font-bold text-ink mb-2">Career Essentials in Generative AI</h3>
+                            <p class="text-primary font-medium">Microsoft & LinkedIn</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Certificate 3 -->
-                <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200 overflow-hidden group scroll-reveal stagger-3">
+                <div
+                    class="relative bg-surface rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/25 overflow-hidden group scroll-reveal stagger-3">
                     <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
-                        <img src="resPic/brown2.jpg" alt="Certificate Background" class="w-full h-full object-cover">
+                        <img src="resPic/forDesign/brown2.jpg" alt="Certificate Background"
+                            class="w-full h-full object-cover">
                     </div>
                     <div class="relative z-10">
                         <div class="text-center mb-4">
                             <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                <img width="48" height="48" src="https://img.icons8.com/bubbles/100/certificate.png" alt="certificate" class="w-full h-full object-contain">
+                                <img width="48" height="48" src="https://img.icons8.com/bubbles/100/certificate.png"
+                                    alt="certificate" class="w-full h-full object-contain">
                             </div>
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">Mathematics Behind LLMs and Transformers</h3>
-                            <p class="text-amber-700 font-medium">Udemy</p>
+                            <h3 class="text-lg font-bold text-ink mb-2">Mathematics Behind LLMs and Transformers</h3>
+                            <p class="text-primary font-medium">Udemy</p>
                         </div>
                     </div>
                 </div>
@@ -1063,65 +1617,76 @@
 
 
     <!-- Contact Section -->
-    <section class="py-20 bg-gradient-to-br from-amber-50 via-amber-100 to-yellow-100 text-black relative" id="contact">
+    <section class="py-20 bg-gradient-to-br from-primary/10 via-primary/15 to-secondary/15 text-black relative"
+        id="contact">
         <!-- Background Image -->
         <div class="absolute inset-0 opacity-15">
-            <img src="resPic/footer.jpg" alt="Background" class="w-full h-full object-cover">
+            <img src="resPic/forDesign/footer.jpg" alt="Background" class="w-full h-full object-cover">
         </div>
-        
+
         <div class="container mx-auto px-6 relative z-10 ">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-16 text-black scroll-reveal">LET'S WORK TOGETHER</h2>
-            
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-16 text-black scroll-reveal">LET'S WORK TOGETHER
+            </h2>
+
             <div class="max-w-4xl mx-auto text-center">
                 <div class="p-12 scroll-reveal">
-                  
-                    <p class="text-xl text-amber-100 mb-12 leading-relaxed text-black">
-                        If my portfolio sparks even a little curiosity, let’s talk and collab ideas welcome.
+
+                    <p class="text-xl text-primary mb-12 leading-relaxed text-black">
+                        If my portfolio sparks even a little curiosity, let's talk and collab ideas welcome.
                     </p>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 text-black scroll-reveal stagger-1">
+
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 text-black scroll-reveal stagger-1">
                         <div class="text-center">
                             <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                <img width="48" height="48" src="https://img.icons8.com/clouds/100/new-post.png" alt="new-post" class="w-full h-full object-contain">
+                                <img width="48" height="48" src="https://img.icons8.com/clouds/100/new-post.png"
+                                    alt="new-post" class="w-full h-full object-contain">
                             </div>
-                            <a href="mailto:rsumaiya1602@gmail.com" class="text-black hover:text-gray-600 transition-colors text-sm lg:text-base">
+                            <a href="mailto:rsumaiya1602@gmail.com"
+                                class="text-black hover:text-muted transition-colors text-sm lg:text-base">
                                 rsumaiya1602@gmail.com
                             </a>
                         </div>
-                        
+
                         <div class="text-center">
                             <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                <img width="48" height="48" src="https://img.icons8.com/dusk/64/phone-disconnected.png" alt="phone-disconnected" class="w-full h-full object-contain">
+                                <img width="48" height="48" src="https://img.icons8.com/dusk/64/phone-disconnected.png"
+                                    alt="phone-disconnected" class="w-full h-full object-contain">
                             </div>
-                            <a href="tel:01740392161" class="text-black hover:text-gray-600 transition-colors text-sm lg:text-base">
+                            <a href="tel:01740392161"
+                                class="text-black hover:text-muted transition-colors text-sm lg:text-base">
                                 01740392161
                             </a>
-                        </div>  
-                        
-                        <div class="text-center">
-                             <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                    <a href="https://www.linkedin.com/in/sumaiya-rahman-0865362a7/" target="_blank" class="text-black hover:text-gray-600 transition-colors text-sm lg:text-base">
-                                <img width="48" height="48" src="https://img.icons8.com/clouds/100/linkedin.png" alt="linkedin" class="w-full h-full object-contain">
-                            </a>
-                                
-                            </div>
-                            <a href="https://www.linkedin.com/in/sumaiya-rahman-0865362a7/" target="_blank" class="text-black hover:text-gray-600 transition-colors text-sm lg:text-base">
-                                LinkedIn
-                            </a>
-                          
-                                            
                         </div>
-                        
+
                         <div class="text-center">
                             <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                <img width="48" height="48" src="https://img.icons8.com/pulsar-color/48/location.png" alt="location" class="w-full h-full object-contain">
+                                <a href="https://www.linkedin.com/in/sumaiya-rahman-0865362a7/" target="_blank"
+                                    class="text-black hover:text-muted transition-colors text-sm lg:text-base">
+                                    <img width="48" height="48" src="https://img.icons8.com/clouds/100/linkedin.png"
+                                        alt="linkedin" class="w-full h-full object-contain">
+                                </a>
+
+                            </div>
+                            <a href="https://www.linkedin.com/in/sumaiya-rahman-0865362a7/" target="_blank"
+                                class="text-black hover:text-muted transition-colors text-sm lg:text-base">
+                                LinkedIn
+                            </a>
+
+
+                        </div>
+
+                        <div class="text-center">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <img width="48" height="48" src="https://img.icons8.com/pulsar-color/48/location.png"
+                                    alt="location" class="w-full h-full object-contain">
                             </div>
                             <span class="text-black text-sm lg:text-base">Mirpur, Dhaka, Bangladesh</span>
                         </div>
                     </div>
-                    
 
-               
+
+
                 </div>
             </div>
         </div>
@@ -1148,7 +1713,7 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const scrollObserver = new IntersectionObserver(function(entries) {
+        const scrollObserver = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
@@ -1157,7 +1722,7 @@
         }, observerOptions);
 
         // Observe all scroll reveal elements
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const scrollElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
             scrollElements.forEach(el => {
                 scrollObserver.observe(el);
@@ -1165,10 +1730,10 @@
         });
 
         // Parallax effect for background images
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scrolled = window.pageYOffset;
             const parallaxElements = document.querySelectorAll('.parallax-bg');
-            
+
             parallaxElements.forEach(element => {
                 const speed = 0.5;
                 element.style.transform = `translateY(${scrolled * speed}px)`;
@@ -1186,15 +1751,15 @@
         });
 
         // Add hover effects to cards
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const cards = document.querySelectorAll('.smooth-hover');
             cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
+                card.addEventListener('mouseenter', function () {
                     this.style.transform = 'translateY(-5px) scale(1.02)';
                     this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
                 });
-                
-                card.addEventListener('mouseleave', function() {
+
+                card.addEventListener('mouseleave', function () {
                     this.style.transform = 'translateY(0) scale(1)';
                     this.style.boxShadow = '';
                 });
@@ -1202,7 +1767,7 @@
         });
 
         // Add floating animation to profile image
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const profileImg = document.querySelector('img[alt="Sumaiya Rahman"]');
             if (profileImg) {
                 profileImg.classList.add('float-animation');
@@ -1210,7 +1775,7 @@
         });
 
         // Progressive loading for sections
-        const sectionObserver = new IntersectionObserver(function(entries) {
+        const sectionObserver = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const section = entry.target;
@@ -1228,7 +1793,7 @@
         });
 
         // Observe sections for progressive loading
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
                 sectionObserver.observe(section);
@@ -1248,9 +1813,9 @@
         videos.forEach(video => {
             video.element = document.getElementById(video.id);
             if (video.element) {
-                const forceMute = () => { 
-                    video.element.muted = true; 
-                    video.element.volume = 0; 
+                const forceMute = () => {
+                    video.element.muted = true;
+                    video.element.volume = 0;
                 };
                 forceMute();
                 video.element.addEventListener('volumechange', forceMute);
@@ -1260,4 +1825,5 @@
         });
     </script>
 </body>
+
 </html>
